@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Calum Webb: Data Visualisation Portfolio</title>
+    <link>http://portfolio.calumwebb.uk/</link>
+    <description>Recent content on Calum Webb: Data Visualisation Portfolio</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-gb</language>
+    <managingEditor>c.j.webb@sheffield.ac.uk (Calum Webb)</managingEditor>
+    <webMaster>c.j.webb@sheffield.ac.uk (Calum Webb)</webMaster>
+    
+	<atom:link href="http://portfolio.calumwebb.uk/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+  </channel>
+</rss>
