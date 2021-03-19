@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge"><title>Basic Data Scraping, Tidying, Plotting and Annotating with Zfg&#39;s 100% Speedruns - Calum Webb</title><meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta property="og:title" content="Basic Data Scraping, Tidying, Plotting and Annotating with Zfg&#39;s 100% Speedruns" />
+<meta property="og:description" content="TBC" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/posts/zfg-plots/" />
+<meta property="article:published_time" content="2021-02-03T00:00:00+00:00" />
+<meta property="article:modified_time" content="2021-02-03T00:00:00+00:00" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Basic Data Scraping, Tidying, Plotting and Annotating with Zfg&#39;s 100% Speedruns"/>
+<meta name="twitter:description" content="TBC"/>
+<meta name="twitter:site" content="@cjrwebb">
+<meta name="twitter:creator" content="@cjrwebb">
+
+<meta name="twitter:description" content="library(tidyverse) ## Warning: replacing previous import &#39;vctrs::data_frame&#39; by &#39;tibble::data_frame&#39; ## when loading &#39;dplyr&#39; ## ── Attaching packages ────────────────────────────────────────────────────────────── tidyverse 1.3.0 ── ## ✓ ggplot2 3.3.2 ✓ purrr 0.3.4 ## ✓ tibble 3.0.3 ✓ dplyr 1.0.1 ## ✓ tidyr 1.1.0 ✓ stringr 1.4.0 ## ✓ readr 1.3.1 ✓ forcats 0.5.0 ## Warning: package &#39;ggplot2&#39; was built under R version 3.6.2 ## Warning: package &#39;tibble&#39; was built under R version 3." />
+<meta name="twitter:title" content="Basic Data Scraping, Tidying, Plotting and Annotating with Zfg&#39;s 100% Speedruns" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:image" content="http://calumwebb.uk/img/CLA_infographicv2.png" /> 
+	<link href="https://fonts.googleapis.com/css?family=Ubuntu:300,400,300italic,400italic|Raleway:200,300" rel="stylesheet">
+
+	<link rel="stylesheet" type="text/css" media="screen" href="../../css/normalize.css" />
+	<link rel="stylesheet" type="text/css" media="screen" href="../../css/main.css" />
+	<link rel="stylesheet" type="text/css" href="../../css/custom.css" />
+	
+
+	<script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+	<script src="../../js/main.js"></script>
+	<script src="../../js/custom.js"></script>
+	<script src="../../js/custom1.js"></script>
+</head>
+
+<body>
+	<div class="container wrapper post">
+		<meta name="twitter:site" content="@cjrwebb">
+<meta name="twitter:creator" content="@cjrwebb">
+
+<meta name="twitter:description" content="library(tidyverse) ## Warning: replacing previous import &#39;vctrs::data_frame&#39; by &#39;tibble::data_frame&#39; ## when loading &#39;dplyr&#39; ## ── Attaching packages ────────────────────────────────────────────────────────────── tidyverse 1.3.0 ── ## ✓ ggplot2 3.3.2 ✓ purrr 0.3.4 ## ✓ tibble 3.0.3 ✓ dplyr 1.0.1 ## ✓ tidyr 1.1.0 ✓ stringr 1.4.0 ## ✓ readr 1.3.1 ✓ forcats 0.5.0 ## Warning: package &#39;ggplot2&#39; was built under R version 3.6.2 ## Warning: package &#39;tibble&#39; was built under R version 3." />
+<meta name="twitter:title" content="Basic Data Scraping, Tidying, Plotting and Annotating with Zfg&#39;s 100% Speedruns" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:image" content="http://calumwebb.uk/img/CLA_infographicv2.png" /> 
+
+<div class="header">
+	<h1 class="site-title"><a href="../../">Calum Webb</a></h1>
+	<div class="site-description"><h2>Sociologist.</h2><nav class="nav social">
+			<ul class="flat"><a href="https://twitter.com/cjrwebb" title="Twitter"><i data-feather="twitter"></i></a><a href="../../index.xml" title="RSS"><i data-feather="rss"></i></a><a href="mailto:c.j.webb@sheffield.ac.uk" title="Email"><i data-feather="mail"></i></a><a href="https://github.com/cjrwebb" title="Github"><i data-feather="github"></i></a></ul>
+		</nav>
+	</div>
+	
+	<link rel="stylesheet" href="../../css/github-gist.css" rel="stylesheet" id="theme-stylesheet">
+<script src="../../js/highlight.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+	<nav class="nav">
+		<ul class="flat">
+			
+			<li>
+				<a href="../../">Home</a>
+			</li>
+			
+			<li>
+				<a href="../../posts">All posts</a>
+			</li>
+			
+			<li>
+				<a href="../../about">About</a>
+			</li>
+			
+			<li>
+				<a href="../../cv-ac-cw.pdf">Resume/CV</a>
+			</li>
+			
+			<li>
+				<a href="../../tags">Tags</a>
+			</li>
+			
+		</ul>
+	</nav>
+	
+</div>
+
+
+
+		<div class="post-header">
+			<h1 class="title">Basic Data Scraping, Tidying, Plotting and Annotating with Zfg&#39;s 100% Speedruns</h1>
+			<div class="meta">Posted at &mdash; Feb 3, 2021 <span class="draft-label">DRAFT</span> </div>
+		</div>
+
+		<div class="markdown">
+			
+<script src="../../rmarkdown-libs/header-attrs/header-attrs.js"></script>
+
+
+<pre class="r"><code>library(tidyverse)</code></pre>
+<pre><code>## Warning: replacing previous import &#39;vctrs::data_frame&#39; by &#39;tibble::data_frame&#39;
+## when loading &#39;dplyr&#39;</code></pre>
+<pre><code>## ── Attaching packages ────────────────────────────────────────────────────────────── tidyverse 1.3.0 ──</code></pre>
+<pre><code>## ✓ ggplot2 3.3.2     ✓ purrr   0.3.4
+## ✓ tibble  3.0.3     ✓ dplyr   1.0.1
+## ✓ tidyr   1.1.0     ✓ stringr 1.4.0
+## ✓ readr   1.3.1     ✓ forcats 0.5.0</code></pre>
+<pre><code>## Warning: package &#39;ggplot2&#39; was built under R version 3.6.2</code></pre>
+<pre><code>## Warning: package &#39;tibble&#39; was built under R version 3.6.2</code></pre>
+<pre><code>## Warning: package &#39;tidyr&#39; was built under R version 3.6.2</code></pre>
+<pre><code>## Warning: package &#39;purrr&#39; was built under R version 3.6.2</code></pre>
+<pre><code>## ── Conflicts ───────────────────────────────────────────────────────────────── tidyverse_conflicts() ──
+## x dplyr::filter() masks stats::filter()
+## x dplyr::lag()    masks stats::lag()</code></pre>
+<pre class="r"><code>library(rvest)</code></pre>
+<pre><code>## Warning: package &#39;rvest&#39; was built under R version 3.6.2</code></pre>
+<pre><code>## Loading required package: xml2</code></pre>
+<pre><code>## Warning: package &#39;xml2&#39; was built under R version 3.6.2</code></pre>
+<pre><code>## 
+## Attaching package: &#39;rvest&#39;</code></pre>
+<pre><code>## The following object is masked from &#39;package:purrr&#39;:
+## 
+##     pluck</code></pre>
+<pre><code>## The following object is masked from &#39;package:readr&#39;:
+## 
+##     guess_encoding</code></pre>
+<pre class="r"><code>read_html(&quot;https://www.speedrun.com/user/zfg&quot;)</code></pre>
+<pre><code>## {html_document}
+## &lt;html class=&quot;hidden&quot;&gt;
+## [1] &lt;head&gt;\n&lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=UTF-8 ...
+## [2] &lt;body class=&quot;dark&quot;&gt;\n\t&lt;div data-type=&quot;elo-user&quot; style=&quot;display: none&quot;&gt;&lt;/ ...</code></pre>
+
+		</div>
+
+		<div class="post-tags">
+			
+				
+					<nav class="nav tags">
+							<ul class="flat">
+								
+								<li><a href="../../tags/r">R</a></li>
+								
+							</ul>
+					</nav>
+				
+			
+		</div><div id="disqus_thread"></div>
+<script type="text/javascript">
+	(function () {
+		
+		
+		if (window.location.hostname == "localhost")
+			return;
+
+		var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+		var disqus_shortname = 'calumwebb-uk';
+		dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+		(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+	})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by
+		Disqus.</a></noscript>
+<a href="http://disqus.com/" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+	<div class="footer wrapper">
+	<nav class="nav">
+		<div> © Copyright Calum Webb 2019 - 2020 |  <a href="https://github.com/vividvilla/ezhil">Ezhil theme</a> | Built with <a href="https://gohugo.io">Hugo</a></div>
+	</nav>
+</div>
+
+<script>feather.replace()</script>
+</body>
+</html>

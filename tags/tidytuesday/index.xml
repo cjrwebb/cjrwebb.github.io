@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>tidytuesday on Calum Webb</title>
+    <link>/tags/tidytuesday/</link>
+    <description>Recent content in tidytuesday on Calum Webb</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-gb</language>
+    <copyright>© Copyright Calum Webb 2019 - 2020</copyright>
+    <lastBuildDate>Wed, 22 Jan 2020 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="/tags/tidytuesday/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Tidy Tuesday 21/01/2020: Spotifyr. Hierarchical clusters of popular songs by audio features</title>
+      <link>/posts/spotifyr/</link>
+      <pubDate>Wed, 22 Jan 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/posts/spotifyr/</guid>
+      <description>Playlist: https://open.spotify.com/playlist/3kPYr4522CKURLg4ePkuz1?si=3Yx-APApQL2s4KsvFFskAQ
+Playlist: https://open.spotify.com/playlist/18qGN481uKhPCbBy0UHz1i?si=l5jqQlb0R5WD8HYv9UVIlA
+Playlist: https://open.spotify.com/playlist/4ChD4YncnVzSK7E8Z8wn3W?si=JCJUSe55TNGREQ1q0QF9CQ
+Playlist: https://open.spotify.com/playlist/2kdfe1C6wSRkNxhrEyIVOP?si=QRJbJofnRUyvib-_U4GSvA
+Playlist: https://open.spotify.com/playlist/3FnznOoaA2lnDr7wIT0j5Q?si=lgcYDNeDSau2nnP0_ID92w
+Playlist: https://open.spotify.com/playlist/7nwVFzZ67qgu1VddrbpQ5K?si=cWn4yU4pRj-k8H37icWRog
+Playlists created using spotipy.
+This was my attempt at creating an appealing (although maybe not super informative) visualisation of popular songs from the Spotify data in this week’s Tidy Tuesday.
+If I was using my statistical routes, I would just describe this as a dendrogram with polar coordinates showing the results from a hierarchical cluster analysis based on several audio features: danceability, energy, loudness, speechiness, acousticness, instrumentalness, liveness, valence, and tempo.</description>
+    </item>
+    
+    <item>
+      <title>Tidy Tuesday (14/01/2020): If you&#39;re going to use only letters for your password make it a long one.</title>
+      <link>/posts/tt-20200114-passwords/</link>
+      <pubDate>Sun, 19 Jan 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/posts/tt-20200114-passwords/</guid>
+      <description>This is my first attempt at a Tidy Tuesday. I’ve been following the Tidy Tuesday initiative since it started, but still never got around to doing one, so this is an attempt to remedy that. The tidy tuesday for this week (14/01/2020) was about passwords, using data about the most common passwords that have appeared in multiple data breaches. These were collated in a dataset by Information is Beautiful.</description>
+    </item>
+    
+  </channel>
+</rss>

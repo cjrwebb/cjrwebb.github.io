@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>inequalities on Calum Webb</title>
+    <link>/tags/inequalities/</link>
+    <description>Recent content in inequalities on Calum Webb</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-gb</language>
+    <copyright>© Copyright Calum Webb 2019 - 2020</copyright>
+    <lastBuildDate>Thu, 20 Aug 2020 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="/tags/inequalities/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Socioeconomic inequalities in child welfare interventions are five times stronger in unequal and affluent local authorities than they are in equal and deprived local authorities. Why?</title>
+      <link>/posts/inequality-cwi/</link>
+      <pubDate>Thu, 20 Aug 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/posts/inequality-cwi/</guid>
+      <description>One of the articles we had published in Children and Youth Services Review this year highlighted a new finding that the social gradient in child welfare interventions was predicted to be as much as five times stronger in local authorities with both lower-than-average deprivation and higher-than-average income inequality than it was in local authorities with higher-than-average deprivation and lower-than-average income inequality. This blog post explores one reason why this might be.</description>
+    </item>
+    
+    <item>
+      <title>A few lines of code separate quantitative analysis from predictive analytics</title>
+      <link>/posts/a-few-lines-of-code/</link>
+      <pubDate>Thu, 13 Aug 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/posts/a-few-lines-of-code/</guid>
+      <description>An image of a dog wearing glasses, “typing” on a tablet computer.  The programming equivalent of a hair’s breadth stands between the code required to analyse trends, associations, and inequalities in data and the code required to turn these into contextless, essentialist predictions. This is, of course, something of a simplification - it may not hold true when talking about very complex machine learning models designed for producing images or sounds - but within the context of the kinds of predictive analytics used in governance, including the algorithm that caused A-level results chaos today, it is, essentially, true.</description>
+    </item>
+    
+    <item>
+      <title>Anti-racist and anti-poverty social work must be both: Child Welfare Inequalities at the intersection of race and class</title>
+      <link>/posts/anti-racist-and-anti-poverty-social-work-must-be-both/</link>
+      <pubDate>Wed, 05 Aug 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/posts/anti-racist-and-anti-poverty-social-work-must-be-both/</guid>
+      <description>Calum Webb, the University of Sheffield  This graph shows how existing ethnic disproportionality in child welfare interventions would affect the demographics of children taken into care in three differently deprived neighbourhoods if all had an equal size population from each ethnic group. You can see how, for example, Mixed Heritage (Other) children are over-represented in rates of children taken into care relative to their population size regardless of the level of deprivation, but their rates are also increasingly disproportionately high as deprivation increases.</description>
+    </item>
+    
+    <item>
+      <title>Intersections of Inequality using MOG: the Mapping Overlaps Gadget</title>
+      <link>/post/mog-alpha-launch/</link>
+      <pubDate>Sat, 11 Jan 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/post/mog-alpha-launch/</guid>
+      <description>{&#34;x&#34;:{&#34;visdat&#34;:{&#34;16eff28b0ed29&#34;:[&#34;function () &#34;,&#34;plotlyVisDat&#34;],&#34;16eff77a2339d&#34;:[&#34;function () &#34;,&#34;data&#34;]},&#34;cur_data&#34;:&#34;16eff77a2339d&#34;,&#34;attrs&#34;:{&#34;16eff77a2339d&#34;:{&#34;text&#34;:{},&#34;hovertemplate&#34;:&#34;%{text}&#34;,&#34;color&#34;:{},&#34;colors&#34;:[&#34;#3F2949&#34;,&#34;#435786&#34;,&#34;#4885C1&#34;,&#34;#77324C&#34;,&#34;#806A8A&#34;,&#34;#89A1C8&#34;,&#34;#AE3A4E&#34;,&#34;#BC7C8F&#34;,&#34;#CABED0&#34;],&#34;alpha&#34;:0.6,&#34;alpha_stroke&#34;:0.1,&#34;sizes&#34;:[10,100],&#34;spans&#34;:[1,20],&#34;x&#34;:{},&#34;y&#34;:{},&#34;_bbox&#34;:[-1.80147070870193,53.3047216742583,-1.3247265687219,53.5029197750173],&#34;mode&#34;:&#34;lines&#34;,&#34;fill&#34;:&#34;toself&#34;,&#34;inherit&#34;:true}},&#34;layout&#34;:{&#34;margin&#34;:{&#34;b&#34;:40,&#34;l&#34;:60,&#34;t&#34;:25,&#34;r&#34;:10},&#34;mapType&#34;:&#34;mapbox&#34;,&#34;mapbox&#34;:{&#34;domain&#34;:{&#34;x&#34;:[0,1],&#34;y&#34;:[0,1]},&#34;zoom&#34;:8,&#34;style&#34;:&#34;mapbox://styles/drcalumwebb/ck55r34nt00yh1dol4wfi3xi4&#34;,&#34;accesstoken&#34;:&#34;pk.eyJ1IjoiZHJjYWx1bXdlYmIiLCJhIjoiY2s1NXF4aDl3MGJ5bTNvcGM3N3FxM202ZiJ9.MDz2xreMNIPGfh9LYgQ3uQ&#34;,&#34;_fitBounds&#34;:{&#34;bounds&#34;:[-1.80623815010173,53.3027396932507,-1.3199591273221,53.5049017560249],&#34;options&#34;:{&#34;padding&#34;:10,&#34;linear&#34;:false,&#34;offset&#34;:[0,0]}},&#34;center&#34;:{&#34;lat&#34;:53.4038207246378,&#34;lon&#34;:-1.56309863871191}},&#34;showlegend&#34;:false,&#34;hovermode&#34;:&#34;closest&#34;},&#34;source&#34;:&#34;A&#34;,&#34;config&#34;:{&#34;showSendToCloud&#34;:false,&#34;mapboxAccessToken&#34;:&#34;pk.eyJ1IjoiZHJjYWx1bXdlYmIiLCJhIjoiY2s1NXF4aDl3MGJ5bTNvcGM3N3FxM202ZiJ9.MDz2xreMNIPGfh9LYgQ3uQ&#34;},&#34;data&#34;:[{&#34;fillcolor&#34;:&#34;rgba(202,190,208,0.6)&#34;,&#34;text&#34;:[&#34;IncomeScor: 0
+TEC5000JBP: 16
+Broomhall&#34;,&#34;IncomeScor: 0
+TEC5000JBP: 16
+Broomhall&#34;,&#34;IncomeScor: 0
+TEC5000JBP: 16
+Broomhall&#34;,&#34;IncomeScor: 0
+TEC5000JBP: 16
+Broomhall&#34;,&#34;IncomeScor: 0
+TEC5000JBP: 16
+Broomhall&#34;,&#34;IncomeScor: 0
+TEC5000JBP: 16
+Broomhall&#34;,&#34;IncomeScor: 0
+TEC5000JBP: 16
+Broomhall&#34;,&#34;IncomeScor: 0
+TEC5000JBP: 16
+Broomhall&#34;,null,&#34;IncomeScor: 0.1
+TEC5000JBP: 15
+Broomhill &amp; Lower Crookesmoor&#34;,&#34;IncomeScor: 0.1
+TEC5000JBP: 15
+Broomhill &amp; Lower Crookesmoor&#34;,&#34;IncomeScor: 0.1
+TEC5000JBP: 15
+Broomhill &amp; Lower Crookesmoor&#34;,&#34;IncomeScor: 0.1
+TEC5000JBP: 15
+Broomhill &amp; Lower Crookesmoor&#34;</description>
+    </item>
+    
+    <item>
+      <title>Intersections of Inequality using MOG: the Mapping Overlaps Gadget</title>
+      <link>/posts/mog-alpha-launch/</link>
+      <pubDate>Sat, 11 Jan 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/posts/mog-alpha-launch/</guid>
+      <description>{&#34;x&#34;:{&#34;visdat&#34;:{&#34;16f2a687662cf&#34;:[&#34;function () &#34;,&#34;plotlyVisDat&#34;],&#34;16f2a3451399d&#34;:[&#34;function () &#34;,&#34;data&#34;]},&#34;cur_data&#34;:&#34;16f2a3451399d&#34;,&#34;attrs&#34;:{&#34;16f2a3451399d&#34;:{&#34;text&#34;:{},&#34;hovertemplate&#34;:&#34;%{text}&#34;,&#34;color&#34;:{},&#34;colors&#34;:[&#34;#3F2949&#34;,&#34;#435786&#34;,&#34;#4885C1&#34;,&#34;#77324C&#34;,&#34;#806A8A&#34;,&#34;#89A1C8&#34;,&#34;#AE3A4E&#34;,&#34;#BC7C8F&#34;,&#34;#CABED0&#34;],&#34;alpha&#34;:0.6,&#34;alpha_stroke&#34;:0.1,&#34;sizes&#34;:[10,100],&#34;spans&#34;:[1,20],&#34;x&#34;:{},&#34;y&#34;:{},&#34;_bbox&#34;:[-1.80147070870193,53.3047216742583,-1.3247265687219,53.5029197750173],&#34;mode&#34;:&#34;lines&#34;,&#34;fill&#34;:&#34;toself&#34;,&#34;inherit&#34;:true}},&#34;layout&#34;:{&#34;width&#34;:500,&#34;height&#34;:400,&#34;margin&#34;:{&#34;b&#34;:0,&#34;l&#34;:0,&#34;t&#34;:0,&#34;r&#34;:0,&#34;pad&#34;:0},&#34;mapType&#34;:&#34;mapbox&#34;,&#34;mapbox&#34;:{&#34;domain&#34;:{&#34;x&#34;:[0,1],&#34;y&#34;:[0,1]},&#34;zoom&#34;:8,&#34;style&#34;:&#34;mapbox://styles/drcalumwebb/ck55r34nt00yh1dol4wfi3xi4&#34;,&#34;accesstoken&#34;:&#34;pk.eyJ1IjoiZHJjYWx1bXdlYmIiLCJhIjoiY2s1NXF4aDl3MGJ5bTNvcGM3N3FxM202ZiJ9.MDz2xreMNIPGfh9LYgQ3uQ&#34;,&#34;_fitBounds&#34;:{&#34;bounds&#34;:[-1.80623815010173,53.3027396932507,-1.3199591273221,53.5049017560249],&#34;options&#34;:{&#34;padding&#34;:10,&#34;linear&#34;:false,&#34;offset&#34;:[0,0]}},&#34;center&#34;:{&#34;lat&#34;:53.4038207246378,&#34;lon&#34;:-1.56309863871191}},&#34;showlegend&#34;:false,&#34;hovermode&#34;:&#34;closest&#34;},&#34;source&#34;:&#34;A&#34;,&#34;config&#34;:{&#34;showSendToCloud&#34;:false,&#34;mapboxAccessToken&#34;:&#34;pk.eyJ1IjoiZHJjYWx1bXdlYmIiLCJhIjoiY2s1NXF4aDl3MGJ5bTNvcGM3N3FxM202ZiJ9.MDz2xreMNIPGfh9LYgQ3uQ&#34;},&#34;data&#34;:[{&#34;fillcolor&#34;:&#34;rgba(202,190,208,0.6)&#34;,&#34;text&#34;:[&#34;IncomeScor: 0
+TEC5000JBP: 16
+Broomhall&#34;,&#34;IncomeScor: 0
+TEC5000JBP: 16
+Broomhall&#34;,&#34;IncomeScor: 0
+TEC5000JBP: 16
+Broomhall&#34;,&#34;IncomeScor: 0
+TEC5000JBP: 16
+Broomhall&#34;,&#34;IncomeScor: 0
+TEC5000JBP: 16
+Broomhall&#34;,&#34;IncomeScor: 0
+TEC5000JBP: 16
+Broomhall&#34;,&#34;IncomeScor: 0
+TEC5000JBP: 16
+Broomhall&#34;,&#34;IncomeScor: 0
+TEC5000JBP: 16
+Broomhall&#34;,null,&#34;IncomeScor: 0.1
+TEC5000JBP: 15
+Broomhill &amp; Lower Crookesmoor&#34;,&#34;IncomeScor: 0.1
+TEC5000JBP: 15
+Broomhill &amp; Lower Crookesmoor&#34;,&#34;IncomeScor: 0.1
+TEC5000JBP: 15
+Broomhill &amp; Lower Crookesmoor&#34;,&#34;IncomeScor: 0.1
+TEC5000JBP: 15
+Broomhill &amp; Lower Crookesmoor&#34;</description>
+    </item>
+    
+  </channel>
+</rss>

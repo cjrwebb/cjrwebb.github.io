@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>datavis on Calum Webb</title>
+    <link>/tags/datavis/</link>
+    <description>Recent content in datavis on Calum Webb</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-gb</language>
+    <copyright>© Copyright Calum Webb 2019 - 2020</copyright>
+    <lastBuildDate>Mon, 20 Apr 2020 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="/tags/datavis/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Poster: Visualising the Villagers, datavis meets Animal Crossing</title>
+      <link>/posts/visualising-the-villagers-datavis-meets-animal-crossing/</link>
+      <pubDate>Mon, 20 Apr 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/posts/visualising-the-villagers-datavis-meets-animal-crossing/</guid>
+      <description>As many have pointed out, the release of the anticipated Animal Crossing: New Horizons coincided with with the COVID-19 pandemic. Like many others I’ve been enjoying the experience of building an island paradise for my animal villagers, but I had to find something to do while waiting for my money rock to respawn, my fruits to regrow, and my bridges to be built.
+Over the last week I’ve been scraping data from various Wikis and fan sources to put together a set of visualisations about the animals that inhabit the many digital islands.</description>
+    </item>
+    
+    <item>
+      <title>Tidy Tuesday 21/01/2020: Spotifyr. Hierarchical clusters of popular songs by audio features</title>
+      <link>/posts/spotifyr/</link>
+      <pubDate>Wed, 22 Jan 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/posts/spotifyr/</guid>
+      <description>Playlist: https://open.spotify.com/playlist/3kPYr4522CKURLg4ePkuz1?si=3Yx-APApQL2s4KsvFFskAQ
+Playlist: https://open.spotify.com/playlist/18qGN481uKhPCbBy0UHz1i?si=l5jqQlb0R5WD8HYv9UVIlA
+Playlist: https://open.spotify.com/playlist/4ChD4YncnVzSK7E8Z8wn3W?si=JCJUSe55TNGREQ1q0QF9CQ
+Playlist: https://open.spotify.com/playlist/2kdfe1C6wSRkNxhrEyIVOP?si=QRJbJofnRUyvib-_U4GSvA
+Playlist: https://open.spotify.com/playlist/3FnznOoaA2lnDr7wIT0j5Q?si=lgcYDNeDSau2nnP0_ID92w
+Playlist: https://open.spotify.com/playlist/7nwVFzZ67qgu1VddrbpQ5K?si=cWn4yU4pRj-k8H37icWRog
+Playlists created using spotipy.
+This was my attempt at creating an appealing (although maybe not super informative) visualisation of popular songs from the Spotify data in this week’s Tidy Tuesday.
+If I was using my statistical routes, I would just describe this as a dendrogram with polar coordinates showing the results from a hierarchical cluster analysis based on several audio features: danceability, energy, loudness, speechiness, acousticness, instrumentalness, liveness, valence, and tempo.</description>
+    </item>
+    
+  </channel>
+</rss>

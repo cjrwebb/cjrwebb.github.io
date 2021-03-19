@@ -1,0 +1,40 @@
+---
+title: Résumé / CV
+author: 'Calum Webb'
+date: '2019-12-04'
+slug: resume-cv
+categories: []
+tags: []
+draft: yes
+disqus: false
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, warning = FALSE, message = FALSE)
+library(vitae)
+library(tidyverse)
+```
+
+## Some stuff about me
+
+ * I poisoned myself doing research.
+ * I was the first woman to win a Nobel prize
+ * I was the first person and only woman to win a Nobel prize in two different sciences.
+
+## Education
+```{r, include = TRUE}
+library(tibble)
+library(formattable)
+library(kableExtra)
+edu_data <- tribble(
+  ~ Degree, ~ Year, ~ Institution, ~ Where,
+  "Informal studies", "1889-91", "Flying University", "Warsaw, Poland",
+  "Master of Physics", "1893", "Sorbonne Université", "Paris, France",
+  "Master of Mathematics", "1894", "Sorbonne Université", "Paris, France"
+)
+knitr::kable(edu_data, format = "html") %>%
+  kable_styling(position = "l") %>%
+  column_spec(3, width = "7cm") %>%
+  column_spec(1, width = "6cm") %>%
+  column_spec(2, width = "3cm")
+```

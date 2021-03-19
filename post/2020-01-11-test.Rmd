@@ -1,0 +1,11 @@
+---
+title: test
+author: ''
+date: '2020-01-11'
+slug: test
+categories: []
+tags: []
+draft: yes
+---
+
+![](MOG_example.jpg)

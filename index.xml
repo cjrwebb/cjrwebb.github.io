@@ -1,16 +1,297 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Calum Webb: Data Visualisation Portfolio</title>
-    <link>http://portfolio.calumwebb.uk/</link>
-    <description>Recent content on Calum Webb: Data Visualisation Portfolio</description>
+    <title>Calum Webb</title>
+    <link>/</link>
+    <description>Recent content on Calum Webb</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-gb</language>
-    <managingEditor>c.j.webb@sheffield.ac.uk (Calum Webb)</managingEditor>
-    <webMaster>c.j.webb@sheffield.ac.uk (Calum Webb)</webMaster>
+    <copyright>© Copyright Calum Webb 2019 - 2020</copyright>
+    <lastBuildDate>Thu, 20 Aug 2020 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="http://portfolio.calumwebb.uk/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Socioeconomic inequalities in child welfare interventions are five times stronger in unequal and affluent local authorities than they are in equal and deprived local authorities. Why?</title>
+      <link>/posts/inequality-cwi/</link>
+      <pubDate>Thu, 20 Aug 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/posts/inequality-cwi/</guid>
+      <description>One of the articles we had published in Children and Youth Services Review this year highlighted a new finding that the social gradient in child welfare interventions was predicted to be as much as five times stronger in local authorities with both lower-than-average deprivation and higher-than-average income inequality than it was in local authorities with higher-than-average deprivation and lower-than-average income inequality. This blog post explores one reason why this might be.</description>
+    </item>
+    
+    <item>
+      <title>A few lines of code separate quantitative analysis from predictive analytics</title>
+      <link>/posts/a-few-lines-of-code/</link>
+      <pubDate>Thu, 13 Aug 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/posts/a-few-lines-of-code/</guid>
+      <description>An image of a dog wearing glasses, “typing” on a tablet computer.  The programming equivalent of a hair’s breadth stands between the code required to analyse trends, associations, and inequalities in data and the code required to turn these into contextless, essentialist predictions. This is, of course, something of a simplification - it may not hold true when talking about very complex machine learning models designed for producing images or sounds - but within the context of the kinds of predictive analytics used in governance, including the algorithm that caused A-level results chaos today, it is, essentially, true.</description>
+    </item>
+    
+    <item>
+      <title>Anti-racist and anti-poverty social work must be both: Child Welfare Inequalities at the intersection of race and class</title>
+      <link>/posts/anti-racist-and-anti-poverty-social-work-must-be-both/</link>
+      <pubDate>Wed, 05 Aug 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/posts/anti-racist-and-anti-poverty-social-work-must-be-both/</guid>
+      <description>Calum Webb, the University of Sheffield  This graph shows how existing ethnic disproportionality in child welfare interventions would affect the demographics of children taken into care in three differently deprived neighbourhoods if all had an equal size population from each ethnic group. You can see how, for example, Mixed Heritage (Other) children are over-represented in rates of children taken into care relative to their population size regardless of the level of deprivation, but their rates are also increasingly disproportionately high as deprivation increases.</description>
+    </item>
+    
+    <item>
+      <title>The Child Welfare Inequalities App Version 2: Now in Open Beta</title>
+      <link>/posts/cwip-app-v2-launch/</link>
+      <pubDate>Sun, 02 Aug 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/posts/cwip-app-v2-launch/</guid>
+      <description>Click here to go directly to the CWIP App Version 2 Beta. For a brief overview, read on…
+
+It’s been a year since I started working on the first version of the Child Welfare Inequalities Project App. The purpose of the app was to help social workers, policymakers, local government, activists - anyone, really - with the task of representing trends and patterns in, and pulling out basic statistics from, children’s services data.</description>
+    </item>
+    
+    <item>
+      <title>Ethnic Inequalities in Local Authority Children Looked After Rates (CWIP v2 Plots Preview)</title>
+      <link>/posts/ethnicity-cla/</link>
+      <pubDate>Wed, 29 Jul 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/posts/ethnicity-cla/</guid>
+      <description>The following are some charts that are created with a function that forms a new part of the Child Welfare Inequalities Project App. You can read our research on ethnic inequalities in intervention rates here (Open Access). We have just had a new article accepted in Children and Youth Services Review that extends this work further with intersectional population models, look out for an announcement on Twitter for when this is published.</description>
+    </item>
+    
+    <item>
+      <title>&#39;More evidence needed...&#39; Pessimism of a sociologist in the age of justice procrastination.</title>
+      <link>/posts/more-evidence-needed/</link>
+      <pubDate>Sat, 20 Jun 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/posts/more-evidence-needed/</guid>
+      <description>‘What is it you’re wanting me to reconcile myself to? I was born here almost sixty years ago. I’m not going to live another sixty years. You always told me it takes time. It’s taken my father’s time, my mother’s time. My uncle’s time. My brothers’ and my sisters’ time. My nieces’ and my nephews’ time. How much time do you want for your “progress?”’
+James Baldwin, The Price of a Ticket</description>
+    </item>
+    
+    <item>
+      <title>Citations Grabber</title>
+      <link>/posts/citations-grabber/</link>
+      <pubDate>Sat, 06 Jun 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/posts/citations-grabber/</guid>
+      <description>Presumably the anxiety stored somewhere in my unconscious has prompted me to spend this weekend automating the process of adding publications, citation statistics, and employment and education details to my CV, as well as implementing a system where things like teaching, reports not tracked by Google Scholar, and other miscellaneous bobbins can be stored more easily in a database, ready to be updated and sorted.
+I quite like the end result, which you can see using the Resume/CV link above.</description>
+    </item>
+    
+    <item>
+      <title>Policy and Practice or Structural Inequality? Challenging the popular interpretation of the NAO&#39;s 2019 report on pressures on children&#39;s social care.</title>
+      <link>/posts/policy-and-practice-or-structural-inequality/</link>
+      <pubDate>Sun, 26 Apr 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/posts/policy-and-practice-or-structural-inequality/</guid>
+      <description>Calum Webb
+
+Back in January 2019, the National Audit Office published a report which claimed that 44 per cent of the variance in Local Authority Child Protection Plans could be explained by ‘local authority characteristics’ other than deprivation (which could explain 15 per cent). Although they never claimed this, the finding was largely interpreted as evidence that local authority policy and practice was more important than structural disadvantage - by some magnitude.</description>
+    </item>
+    
+    <item>
+      <title>The biggest problem with the funding formula for Children&#39;s Social Services isn&#39;t that it&#39;s too inequitable, it&#39;s that it&#39;s too relative.</title>
+      <link>/posts/the-biggest-problem-with-the-funding-formula-for-children-s-social-services-isn-t-that-it-s-inequitable-it-s-that-it-s-relative/</link>
+      <pubDate>Sat, 25 Apr 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/posts/the-biggest-problem-with-the-funding-formula-for-children-s-social-services-isn-t-that-it-s-inequitable-it-s-that-it-s-relative/</guid>
+      <description>Photo from Unsplash
+In 2018, Paul Bywaters and I published a paper about the funding of children’s services under the austerity years of the coalition government (open access repository version here). The headline finding from this research was that the term ‘decimated’ was a huge understatement for describing what had happened to funding for family support and early help between 2010 and 2015. Resources available to local authorities for providing these services could more accurately be described as having been obliterated, and that the cuts were far worse in the most deprived local authorities.</description>
+    </item>
+    
+    <item>
+      <title>Animal Crossing Data Camp Day 1: Reading in and exploring the data</title>
+      <link>/unpublished/acdc1/</link>
+      <pubDate>Mon, 20 Apr 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/unpublished/acdc1/</guid>
+      <description>Everything related to Animal Crossing belongs to its original owners. These posts are purely for educational and entertainment purposes for fans of the series.
+Welcome to the first in a series of posts exploring some beginner level data science in R using data from the Animal Crossing series. This series is intended to help people new to data analysis and statistics cover some easy to use ways of exploring and analysing data, through the medium of cute animals.</description>
+    </item>
+    
+    <item>
+      <title>Poster: Visualising the Villagers, datavis meets Animal Crossing</title>
+      <link>/posts/visualising-the-villagers-datavis-meets-animal-crossing/</link>
+      <pubDate>Mon, 20 Apr 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/posts/visualising-the-villagers-datavis-meets-animal-crossing/</guid>
+      <description>As many have pointed out, the release of the anticipated Animal Crossing: New Horizons coincided with with the COVID-19 pandemic. Like many others I’ve been enjoying the experience of building an island paradise for my animal villagers, but I had to find something to do while waiting for my money rock to respawn, my fruits to regrow, and my bridges to be built.
+Over the last week I’ve been scraping data from various Wikis and fan sources to put together a set of visualisations about the animals that inhabit the many digital islands.</description>
+    </item>
+    
+    <item>
+      <title>Test</title>
+      <link>/post/test/</link>
+      <pubDate>Fri, 17 Apr 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/post/test/</guid>
+      <description>test aigadkb</description>
+    </item>
+    
+    <item>
+      <title>Tidy Tuesday 21/01/2020: Spotifyr. Hierarchical clusters of popular songs by audio features</title>
+      <link>/posts/spotifyr/</link>
+      <pubDate>Wed, 22 Jan 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/posts/spotifyr/</guid>
+      <description>Playlist: https://open.spotify.com/playlist/3kPYr4522CKURLg4ePkuz1?si=3Yx-APApQL2s4KsvFFskAQ
+Playlist: https://open.spotify.com/playlist/18qGN481uKhPCbBy0UHz1i?si=l5jqQlb0R5WD8HYv9UVIlA
+Playlist: https://open.spotify.com/playlist/4ChD4YncnVzSK7E8Z8wn3W?si=JCJUSe55TNGREQ1q0QF9CQ
+Playlist: https://open.spotify.com/playlist/2kdfe1C6wSRkNxhrEyIVOP?si=QRJbJofnRUyvib-_U4GSvA
+Playlist: https://open.spotify.com/playlist/3FnznOoaA2lnDr7wIT0j5Q?si=lgcYDNeDSau2nnP0_ID92w
+Playlist: https://open.spotify.com/playlist/7nwVFzZ67qgu1VddrbpQ5K?si=cWn4yU4pRj-k8H37icWRog
+Playlists created using spotipy.
+This was my attempt at creating an appealing (although maybe not super informative) visualisation of popular songs from the Spotify data in this week’s Tidy Tuesday.
+If I was using my statistical routes, I would just describe this as a dendrogram with polar coordinates showing the results from a hierarchical cluster analysis based on several audio features: danceability, energy, loudness, speechiness, acousticness, instrumentalness, liveness, valence, and tempo.</description>
+    </item>
+    
+    <item>
+      <title>Tidy Tuesday (14/01/2020): If you&#39;re going to use only letters for your password make it a long one.</title>
+      <link>/posts/tt-20200114-passwords/</link>
+      <pubDate>Sun, 19 Jan 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/posts/tt-20200114-passwords/</guid>
+      <description>This is my first attempt at a Tidy Tuesday. I’ve been following the Tidy Tuesday initiative since it started, but still never got around to doing one, so this is an attempt to remedy that. The tidy tuesday for this week (14/01/2020) was about passwords, using data about the most common passwords that have appeared in multiple data breaches. These were collated in a dataset by Information is Beautiful.</description>
+    </item>
+    
+    <item>
+      <title>Preprocessing quantiles and colourscales for mapping local data efficiently with `plotly` and `mapbox`</title>
+      <link>/posts/mapping-local-data-efficiently-with-plotly-and-mapbox/</link>
+      <pubDate>Sat, 18 Jan 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/posts/mapping-local-data-efficiently-with-plotly-and-mapbox/</guid>
+      <description>{&#34;x&#34;:{&#34;visdat&#34;:{&#34;16f425b6053b8&#34;:[&#34;function () &#34;,&#34;plotlyVisDat&#34;],&#34;16f42111883e6&#34;:[&#34;function () &#34;,&#34;data&#34;]},&#34;cur_data&#34;:&#34;16f42111883e6&#34;,&#34;attrs&#34;:{&#34;16f42111883e6&#34;:{&#34;text&#34;:{},&#34;hovertemplate&#34;:&#34;%{text}&#34;,&#34;showlegend&#34;:false,&#34;color&#34;:{},&#34;colors&#34;:[&#34;#9E0142&#34;,&#34;#BA2148&#34;,&#34;#D6404E&#34;,&#34;#E65948&#34;,&#34;#F47346&#34;,&#34;#F99655&#34;,&#34;#FDB567&#34;,&#34;#FDD07D&#34;,&#34;#FEE695&#34;,&#34;#FEF6B1&#34;,&#34;#F8FCB4&#34;,&#34;#EBF7A0&#34;,&#34;#D3ED9B&#34;,&#34;#B4E0A2&#34;,&#34;#91D3A4&#34;,&#34;#6DC4A4&#34;,&#34;#50A9AF&#34;,&#34;#348BBB&#34;,&#34;#466DB0&#34;,&#34;#5E4FA2&#34;],&#34;alpha&#34;:0.6,&#34;alpha_stroke&#34;:0.1,&#34;sizes&#34;:[10,100],&#34;spans&#34;:[1,20],&#34;x&#34;:{},&#34;y&#34;:{},&#34;_bbox&#34;:[-1.80147070870193,53.3047216742583,-1.3247265687219,53.5029197750173],&#34;mode&#34;:&#34;lines&#34;,&#34;fill&#34;:&#34;toself&#34;,&#34;inherit&#34;:true}},&#34;layout&#34;:{&#34;margin&#34;:{&#34;b&#34;:40,&#34;l&#34;:60,&#34;t&#34;:25,&#34;r&#34;:10},&#34;mapType&#34;:&#34;mapbox&#34;,&#34;mapbox&#34;:{&#34;domain&#34;:{&#34;x&#34;:[0,1],&#34;y&#34;:[0,1]},&#34;zoom&#34;:8,&#34;style&#34;:&#34;mapbox://styles/drcalumwebb/ck55r34nt00yh1dol4wfi3xi4&#34;,&#34;accesstoken&#34;:&#34;pk.eyJ1IjoiZHJjYWx1bXdlYmIiLCJhIjoiY2s1NXF4aDl3MGJ5bTNvcGM3N3FxM202ZiJ9.MDz2xreMNIPGfh9LYgQ3uQ&#34;,&#34;_fitBounds&#34;:{&#34;bounds&#34;:[-1.80623815010173,53.3027396932507,-1.3199591273221,53.5049017560249],&#34;options&#34;:{&#34;padding&#34;:10,&#34;linear&#34;:false,&#34;offset&#34;:[0,0]}},&#34;center&#34;:{&#34;lat&#34;:53.4038207246378,&#34;lon&#34;:-1.56309863871191}},&#34;hovermode&#34;:&#34;closest&#34;,&#34;showlegend&#34;:false},&#34;source&#34;:&#34;A&#34;,&#34;config&#34;:{&#34;showSendToCloud&#34;:false,&#34;mapboxAccessToken&#34;:&#34;pk.eyJ1IjoiZHJjYWx1bXdlYmIiLCJhIjoiY2s1NXF4aDl3MGJ5bTNvcGM3N3FxM202ZiJ9.MDz2xreMNIPGfh9LYgQ3uQ&#34;},&#34;data&#34;:[{&#34;fillcolor&#34;:&#34;rgba(158,1,66,0.6)&#34;,&#34;text&#34;:[&#34;AccssbltGP: 53
+High Green &amp; Burncross&#34;,&#34;AccssbltGP: 53
+High Green &amp; Burncross&#34;,&#34;AccssbltGP: 53
+High Green &amp; Burncross&#34;,&#34;AccssbltGP: 53
+High Green &amp; Burncross&#34;,&#34;AccssbltGP: 53
+High Green &amp; Burncross&#34;,&#34;AccssbltGP: 53
+High Green &amp; Burncross&#34;,&#34;AccssbltGP: 53
+High Green &amp; Burncross&#34;,&#34;AccssbltGP: 53
+High Green &amp; Burncross&#34;,&#34;AccssbltGP: 53
+High Green &amp; Burncross&#34;,null,&#34;AccssbltGP: 52.88
+High Green &amp; Burncross&#34;,&#34;AccssbltGP: 52.88
+High Green &amp; Burncross&#34;,&#34;AccssbltGP: 52.88</description>
+    </item>
+    
+    <item>
+      <title>Intersections of Inequality using MOG: the Mapping Overlaps Gadget</title>
+      <link>/post/mog-alpha-launch/</link>
+      <pubDate>Sat, 11 Jan 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/post/mog-alpha-launch/</guid>
+      <description>{&#34;x&#34;:{&#34;visdat&#34;:{&#34;16eff28b0ed29&#34;:[&#34;function () &#34;,&#34;plotlyVisDat&#34;],&#34;16eff77a2339d&#34;:[&#34;function () &#34;,&#34;data&#34;]},&#34;cur_data&#34;:&#34;16eff77a2339d&#34;,&#34;attrs&#34;:{&#34;16eff77a2339d&#34;:{&#34;text&#34;:{},&#34;hovertemplate&#34;:&#34;%{text}&#34;,&#34;color&#34;:{},&#34;colors&#34;:[&#34;#3F2949&#34;,&#34;#435786&#34;,&#34;#4885C1&#34;,&#34;#77324C&#34;,&#34;#806A8A&#34;,&#34;#89A1C8&#34;,&#34;#AE3A4E&#34;,&#34;#BC7C8F&#34;,&#34;#CABED0&#34;],&#34;alpha&#34;:0.6,&#34;alpha_stroke&#34;:0.1,&#34;sizes&#34;:[10,100],&#34;spans&#34;:[1,20],&#34;x&#34;:{},&#34;y&#34;:{},&#34;_bbox&#34;:[-1.80147070870193,53.3047216742583,-1.3247265687219,53.5029197750173],&#34;mode&#34;:&#34;lines&#34;,&#34;fill&#34;:&#34;toself&#34;,&#34;inherit&#34;:true}},&#34;layout&#34;:{&#34;margin&#34;:{&#34;b&#34;:40,&#34;l&#34;:60,&#34;t&#34;:25,&#34;r&#34;:10},&#34;mapType&#34;:&#34;mapbox&#34;,&#34;mapbox&#34;:{&#34;domain&#34;:{&#34;x&#34;:[0,1],&#34;y&#34;:[0,1]},&#34;zoom&#34;:8,&#34;style&#34;:&#34;mapbox://styles/drcalumwebb/ck55r34nt00yh1dol4wfi3xi4&#34;,&#34;accesstoken&#34;:&#34;pk.eyJ1IjoiZHJjYWx1bXdlYmIiLCJhIjoiY2s1NXF4aDl3MGJ5bTNvcGM3N3FxM202ZiJ9.MDz2xreMNIPGfh9LYgQ3uQ&#34;,&#34;_fitBounds&#34;:{&#34;bounds&#34;:[-1.80623815010173,53.3027396932507,-1.3199591273221,53.5049017560249],&#34;options&#34;:{&#34;padding&#34;:10,&#34;linear&#34;:false,&#34;offset&#34;:[0,0]}},&#34;center&#34;:{&#34;lat&#34;:53.4038207246378,&#34;lon&#34;:-1.56309863871191}},&#34;showlegend&#34;:false,&#34;hovermode&#34;:&#34;closest&#34;},&#34;source&#34;:&#34;A&#34;,&#34;config&#34;:{&#34;showSendToCloud&#34;:false,&#34;mapboxAccessToken&#34;:&#34;pk.eyJ1IjoiZHJjYWx1bXdlYmIiLCJhIjoiY2s1NXF4aDl3MGJ5bTNvcGM3N3FxM202ZiJ9.MDz2xreMNIPGfh9LYgQ3uQ&#34;},&#34;data&#34;:[{&#34;fillcolor&#34;:&#34;rgba(202,190,208,0.6)&#34;,&#34;text&#34;:[&#34;IncomeScor: 0
+TEC5000JBP: 16
+Broomhall&#34;,&#34;IncomeScor: 0
+TEC5000JBP: 16
+Broomhall&#34;,&#34;IncomeScor: 0
+TEC5000JBP: 16
+Broomhall&#34;,&#34;IncomeScor: 0
+TEC5000JBP: 16
+Broomhall&#34;,&#34;IncomeScor: 0
+TEC5000JBP: 16
+Broomhall&#34;,&#34;IncomeScor: 0
+TEC5000JBP: 16
+Broomhall&#34;,&#34;IncomeScor: 0
+TEC5000JBP: 16
+Broomhall&#34;,&#34;IncomeScor: 0
+TEC5000JBP: 16
+Broomhall&#34;,null,&#34;IncomeScor: 0.1
+TEC5000JBP: 15
+Broomhill &amp; Lower Crookesmoor&#34;,&#34;IncomeScor: 0.1
+TEC5000JBP: 15
+Broomhill &amp; Lower Crookesmoor&#34;,&#34;IncomeScor: 0.1
+TEC5000JBP: 15
+Broomhill &amp; Lower Crookesmoor&#34;,&#34;IncomeScor: 0.1
+TEC5000JBP: 15
+Broomhill &amp; Lower Crookesmoor&#34;</description>
+    </item>
+    
+    <item>
+      <title>Intersections of Inequality using MOG: the Mapping Overlaps Gadget</title>
+      <link>/posts/mog-alpha-launch/</link>
+      <pubDate>Sat, 11 Jan 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/posts/mog-alpha-launch/</guid>
+      <description>{&#34;x&#34;:{&#34;visdat&#34;:{&#34;16f2a687662cf&#34;:[&#34;function () &#34;,&#34;plotlyVisDat&#34;],&#34;16f2a3451399d&#34;:[&#34;function () &#34;,&#34;data&#34;]},&#34;cur_data&#34;:&#34;16f2a3451399d&#34;,&#34;attrs&#34;:{&#34;16f2a3451399d&#34;:{&#34;text&#34;:{},&#34;hovertemplate&#34;:&#34;%{text}&#34;,&#34;color&#34;:{},&#34;colors&#34;:[&#34;#3F2949&#34;,&#34;#435786&#34;,&#34;#4885C1&#34;,&#34;#77324C&#34;,&#34;#806A8A&#34;,&#34;#89A1C8&#34;,&#34;#AE3A4E&#34;,&#34;#BC7C8F&#34;,&#34;#CABED0&#34;],&#34;alpha&#34;:0.6,&#34;alpha_stroke&#34;:0.1,&#34;sizes&#34;:[10,100],&#34;spans&#34;:[1,20],&#34;x&#34;:{},&#34;y&#34;:{},&#34;_bbox&#34;:[-1.80147070870193,53.3047216742583,-1.3247265687219,53.5029197750173],&#34;mode&#34;:&#34;lines&#34;,&#34;fill&#34;:&#34;toself&#34;,&#34;inherit&#34;:true}},&#34;layout&#34;:{&#34;width&#34;:500,&#34;height&#34;:400,&#34;margin&#34;:{&#34;b&#34;:0,&#34;l&#34;:0,&#34;t&#34;:0,&#34;r&#34;:0,&#34;pad&#34;:0},&#34;mapType&#34;:&#34;mapbox&#34;,&#34;mapbox&#34;:{&#34;domain&#34;:{&#34;x&#34;:[0,1],&#34;y&#34;:[0,1]},&#34;zoom&#34;:8,&#34;style&#34;:&#34;mapbox://styles/drcalumwebb/ck55r34nt00yh1dol4wfi3xi4&#34;,&#34;accesstoken&#34;:&#34;pk.eyJ1IjoiZHJjYWx1bXdlYmIiLCJhIjoiY2s1NXF4aDl3MGJ5bTNvcGM3N3FxM202ZiJ9.MDz2xreMNIPGfh9LYgQ3uQ&#34;,&#34;_fitBounds&#34;:{&#34;bounds&#34;:[-1.80623815010173,53.3027396932507,-1.3199591273221,53.5049017560249],&#34;options&#34;:{&#34;padding&#34;:10,&#34;linear&#34;:false,&#34;offset&#34;:[0,0]}},&#34;center&#34;:{&#34;lat&#34;:53.4038207246378,&#34;lon&#34;:-1.56309863871191}},&#34;showlegend&#34;:false,&#34;hovermode&#34;:&#34;closest&#34;},&#34;source&#34;:&#34;A&#34;,&#34;config&#34;:{&#34;showSendToCloud&#34;:false,&#34;mapboxAccessToken&#34;:&#34;pk.eyJ1IjoiZHJjYWx1bXdlYmIiLCJhIjoiY2s1NXF4aDl3MGJ5bTNvcGM3N3FxM202ZiJ9.MDz2xreMNIPGfh9LYgQ3uQ&#34;},&#34;data&#34;:[{&#34;fillcolor&#34;:&#34;rgba(202,190,208,0.6)&#34;,&#34;text&#34;:[&#34;IncomeScor: 0
+TEC5000JBP: 16
+Broomhall&#34;,&#34;IncomeScor: 0
+TEC5000JBP: 16
+Broomhall&#34;,&#34;IncomeScor: 0
+TEC5000JBP: 16
+Broomhall&#34;,&#34;IncomeScor: 0
+TEC5000JBP: 16
+Broomhall&#34;,&#34;IncomeScor: 0
+TEC5000JBP: 16
+Broomhall&#34;,&#34;IncomeScor: 0
+TEC5000JBP: 16
+Broomhall&#34;,&#34;IncomeScor: 0
+TEC5000JBP: 16
+Broomhall&#34;,&#34;IncomeScor: 0
+TEC5000JBP: 16
+Broomhall&#34;,null,&#34;IncomeScor: 0.1
+TEC5000JBP: 15
+Broomhill &amp; Lower Crookesmoor&#34;,&#34;IncomeScor: 0.1
+TEC5000JBP: 15
+Broomhill &amp; Lower Crookesmoor&#34;,&#34;IncomeScor: 0.1
+TEC5000JBP: 15
+Broomhill &amp; Lower Crookesmoor&#34;,&#34;IncomeScor: 0.1
+TEC5000JBP: 15
+Broomhill &amp; Lower Crookesmoor&#34;</description>
+    </item>
+    
+    <item>
+      <title>scoutR - Visualising Dragon Ball Z Power Levels with the tidyverse &amp; plotly</title>
+      <link>/post/scoutr-dbz/</link>
+      <pubDate>Sat, 04 Jan 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/post/scoutr-dbz/</guid>
+      <description>{&#34;x&#34;:{&#34;visdat&#34;:{&#34;16eec6791e77b&#34;:[&#34;function () &#34;,&#34;plotlyVisDat&#34;]},&#34;cur_data&#34;:&#34;16eec6791e77b&#34;,&#34;attrs&#34;:{&#34;16eec6791e77b&#34;:{&#34;x&#34;:{},&#34;y&#34;:{},&#34;mode&#34;:&#34;markers+lines&#34;,&#34;text&#34;:{},&#34;marker&#34;:{&#34;size&#34;:10,&#34;opacity&#34;:1},&#34;line&#34;:{&#34;width&#34;:0.7},&#34;hovertemplate&#34;:&#34;Power Level: %{y} %{text}&#34;,&#34;color&#34;:{},&#34;colors&#34;:[&#34;#DC5232&#34;,&#34;#5D2E6B&#34;,&#34;#9DD732&#34;,&#34;#0F227B&#34;,&#34;#A33DC9&#34;,&#34;#5A4AC0&#34;,&#34;#F77B22&#34;,&#34;#3B63E4&#34;,&#34;#782316&#34;,&#34;#AE8C33&#34;,&#34;#CCD3EF&#34;,&#34;#B0E5E5&#34;,&#34;#13150A&#34;,&#34;#EC0100&#34;,&#34;#94C710&#34;,&#34;#3E8909&#34;,&#34;#994A46&#34;,&#34;#1D960A&#34;,&#34;#FAC92D&#34;,&#34;#EDC0BD&#34;,&#34;#F02411&#34;,&#34;#AB3C06&#34;,&#34;#6D4D95&#34;,&#34;#1B51AE&#34;,&#34;#6B2B77&#34;,&#34;#3C1A1A&#34;,&#34;#991F3B&#34;,&#34;#1CACA5&#34;],&#34;alpha_stroke&#34;:1,&#34;sizes&#34;:[10,100],&#34;spans&#34;:[1,20],&#34;type&#34;:&#34;scatter&#34;}},&#34;layout&#34;:{&#34;width&#34;:550,&#34;height&#34;:450,&#34;margin&#34;:{&#34;b&#34;:40,&#34;l&#34;:60,&#34;t&#34;:80,&#34;r&#34;:10},&#34;title&#34;:{&#34;text&#34;:&#34;Power Levels of Main Characters
+(Saiyan to Buu Sagas)&#34;,&#34;size&#34;:18},&#34;font&#34;:{&#34;family&#34;:&#34;SimHei, monospace&#34;},&#34;yaxis&#34;:{&#34;domain&#34;:[0,1],&#34;automargin&#34;:true,&#34;title&#34;:&#34;Power Level (log scale)&#34;,&#34;type&#34;:&#34;log&#34;,&#34;size&#34;:14},&#34;xaxis&#34;:{&#34;domain&#34;:[0,1],&#34;automargin&#34;:true,&#34;title&#34;:&#34;Chronological Order of Power Level Reading&#34;,&#34;size&#34;:14,&#34;rangemode&#34;:&#34;nonnegative&#34;},&#34;hovermode&#34;:&#34;closest&#34;,&#34;showlegend&#34;:true},&#34;source&#34;:&#34;A&#34;,&#34;config&#34;:{&#34;showSendToCloud&#34;:false},&#34;data&#34;:[{&#34;x&#34;:[183,185,223],&#34;y&#34;:[3000000000,2250000000,3000000000],&#34;mode&#34;:&#34;markers+lines&#34;,&#34;text&#34;:[&#34;Android 16
+Imperfect Cell Saga&#34;,&#34;Android 16 (weakened)
+Perfect Cell Saga&#34;,&#34;Android 16
+Cell Games Saga&#34;],&#34;marker&#34;:{&#34;color&#34;:&#34;rgba(148,199,16,1)&#34;,&#34;size&#34;:10,&#34;opacity&#34;:1,&#34;line&#34;:{&#34;color&#34;:&#34;rgba(148,199,16,1)&#34;}},&#34;line&#34;:{&#34;color&#34;:&#34;rgba(148,199,16,1)&#34;,&#34;width&#34;:0.7},&#34;hovertemplate&#34;:[&#34;Power Level: %{y} %{text}&#34;,&#34;Power Level: %{y} %{text}&#34;,&#34;Power Level: %{y} %{text}&#34;],&#34;type&#34;:&#34;scatter&#34;,&#34;name&#34;:&#34;Android 16&#34;,&#34;textfont&#34;:{&#34;color&#34;:&#34;rgba(148,199,16,1)&#34;},&#34;error_y&#34;:{&#34;color&#34;:&#34;rgba(148,199,16,1)&#34;},&#34;error_x&#34;:{&#34;color&#34;:&#34;rgba(148,199,16,1)&#34;},&#34;xaxis&#34;:&#34;x&#34;,&#34;yaxis&#34;:&#34;y&#34;,&#34;frame&#34;:null},{&#34;x&#34;:[148,173,253,359],&#34;y&#34;:[5000000000,5000000000,5000000000,7000000000],&#34;mode&#34;:&#34;markers+lines&#34;,&#34;text&#34;:[&#34;Future Android 17
+Trunks Saga&#34;,&#34;Android 17
+Android Saga&#34;,&#34;Future Android 17
+Cell Games Saga&#34;,&#34;Android 17
+Kid Buu Saga&#34;],&#34;marker&#34;:{&#34;color&#34;:&#34;rgba(247,123,34,1)&#34;,&#34;size&#34;:10,&#34;opacity&#34;:1,&#34;line&#34;:{&#34;color&#34;:&#34;rgba(247,123,34,1)&#34;}},&#34;line&#34;:{&#34;color&#34;:&#34;rgba(247,123,34,1)&#34;,&#34;width&#34;:0.7},&#34;hovertemplate&#34;:[&#34;Power Level: %{y} %{text}&#34;</description>
+    </item>
+    
+    <item>
+      <title>scoutR - Visualising Dragon Ball Z Power Levels with the tidyverse &amp; plotly</title>
+      <link>/posts/scoutr-dbz/</link>
+      <pubDate>Sat, 04 Jan 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/posts/scoutr-dbz/</guid>
+      <description>{&#34;x&#34;:{&#34;visdat&#34;:{&#34;16f162a5ba9ab&#34;:[&#34;function () &#34;,&#34;plotlyVisDat&#34;]},&#34;cur_data&#34;:&#34;16f162a5ba9ab&#34;,&#34;attrs&#34;:{&#34;16f162a5ba9ab&#34;:{&#34;x&#34;:{},&#34;y&#34;:{},&#34;mode&#34;:&#34;markers+lines&#34;,&#34;text&#34;:{},&#34;marker&#34;:{&#34;size&#34;:10,&#34;opacity&#34;:1},&#34;line&#34;:{&#34;width&#34;:0.7},&#34;hovertemplate&#34;:&#34;Power Level: %{y} %{text}&#34;,&#34;color&#34;:{},&#34;colors&#34;:[&#34;#DC5232&#34;,&#34;#5D2E6B&#34;,&#34;#9DD732&#34;,&#34;#0F227B&#34;,&#34;#A33DC9&#34;,&#34;#5A4AC0&#34;,&#34;#F77B22&#34;,&#34;#3B63E4&#34;,&#34;#782316&#34;,&#34;#AE8C33&#34;,&#34;#CCD3EF&#34;,&#34;#B0E5E5&#34;,&#34;#13150A&#34;,&#34;#EC0100&#34;,&#34;#94C710&#34;,&#34;#3E8909&#34;,&#34;#994A46&#34;,&#34;#1D960A&#34;,&#34;#FAC92D&#34;,&#34;#EDC0BD&#34;,&#34;#F02411&#34;,&#34;#AB3C06&#34;,&#34;#6D4D95&#34;,&#34;#1B51AE&#34;,&#34;#6B2B77&#34;,&#34;#3C1A1A&#34;,&#34;#991F3B&#34;,&#34;#1CACA5&#34;],&#34;alpha_stroke&#34;:1,&#34;sizes&#34;:[10,100],&#34;spans&#34;:[1,20],&#34;type&#34;:&#34;scatter&#34;}},&#34;layout&#34;:{&#34;width&#34;:550,&#34;height&#34;:450,&#34;margin&#34;:{&#34;b&#34;:40,&#34;l&#34;:60,&#34;t&#34;:80,&#34;r&#34;:10},&#34;title&#34;:{&#34;text&#34;:&#34;Power Levels of Main Characters
+(Saiyan to Buu Sagas)&#34;,&#34;size&#34;:18},&#34;font&#34;:{&#34;family&#34;:&#34;SimHei, monospace&#34;},&#34;yaxis&#34;:{&#34;domain&#34;:[0,1],&#34;automargin&#34;:true,&#34;title&#34;:&#34;Power Level (log scale)&#34;,&#34;type&#34;:&#34;log&#34;,&#34;size&#34;:14},&#34;xaxis&#34;:{&#34;domain&#34;:[0,1],&#34;automargin&#34;:true,&#34;title&#34;:&#34;Chronological Order of Power Level Reading&#34;,&#34;size&#34;:14,&#34;rangemode&#34;:&#34;nonnegative&#34;},&#34;hovermode&#34;:&#34;closest&#34;,&#34;showlegend&#34;:true},&#34;source&#34;:&#34;A&#34;,&#34;config&#34;:{&#34;showSendToCloud&#34;:false},&#34;data&#34;:[{&#34;x&#34;:[183,185,223],&#34;y&#34;:[3000000000,2250000000,3000000000],&#34;mode&#34;:&#34;markers+lines&#34;,&#34;text&#34;:[&#34;Android 16
+Imperfect Cell Saga&#34;,&#34;Android 16 (weakened)
+Perfect Cell Saga&#34;,&#34;Android 16
+Cell Games Saga&#34;],&#34;marker&#34;:{&#34;color&#34;:&#34;rgba(148,199,16,1)&#34;,&#34;size&#34;:10,&#34;opacity&#34;:1,&#34;line&#34;:{&#34;color&#34;:&#34;rgba(148,199,16,1)&#34;}},&#34;line&#34;:{&#34;color&#34;:&#34;rgba(148,199,16,1)&#34;,&#34;width&#34;:0.7},&#34;hovertemplate&#34;:[&#34;Power Level: %{y} %{text}&#34;,&#34;Power Level: %{y} %{text}&#34;,&#34;Power Level: %{y} %{text}&#34;],&#34;type&#34;:&#34;scatter&#34;,&#34;name&#34;:&#34;Android 16&#34;,&#34;textfont&#34;:{&#34;color&#34;:&#34;rgba(148,199,16,1)&#34;},&#34;error_y&#34;:{&#34;color&#34;:&#34;rgba(148,199,16,1)&#34;},&#34;error_x&#34;:{&#34;color&#34;:&#34;rgba(148,199,16,1)&#34;},&#34;xaxis&#34;:&#34;x&#34;,&#34;yaxis&#34;:&#34;y&#34;,&#34;frame&#34;:null},{&#34;x&#34;:[148,173,253,359],&#34;y&#34;:[5000000000,5000000000,5000000000,7000000000],&#34;mode&#34;:&#34;markers+lines&#34;,&#34;text&#34;:[&#34;Future Android 17
+Trunks Saga&#34;,&#34;Android 17
+Android Saga&#34;,&#34;Future Android 17
+Cell Games Saga&#34;,&#34;Android 17
+Kid Buu Saga&#34;],&#34;marker&#34;:{&#34;color&#34;:&#34;rgba(247,123,34,1)&#34;,&#34;size&#34;:10,&#34;opacity&#34;:1,&#34;line&#34;:{&#34;color&#34;:&#34;rgba(247,123,34,1)&#34;}},&#34;line&#34;:{&#34;color&#34;:&#34;rgba(247,123,34,1)&#34;,&#34;width&#34;:0.7},&#34;hovertemplate&#34;:[&#34;Power Level: %{y} %{text}&#34;</description>
+    </item>
+    
+    <item>
+      <title>Résumé / CV</title>
+      <link>/cv/resume-cv/</link>
+      <pubDate>Wed, 04 Dec 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/cv/resume-cv/</guid>
+      <description>  Some stuff about me  I poisoned myself doing research. I was the first woman to win a Nobel prize I was the first person and only woman to win a Nobel prize in two different sciences.   Education   Degree  Year  Institution  Where      Informal studies  1889-91  Flying University  Warsaw, Poland    Master of Physics  1893  Sorbonne Université  Paris, France    Master of Mathematics  1894  Sorbonne Université  Paris, France      </description>
+    </item>
+    
+    <item>
+      <title>About</title>
+      <link>/about/</link>
+      <pubDate>Fri, 19 Apr 2019 21:37:58 +0530</pubDate>
+      
+      <guid>/about/</guid>
+      <description>Dr Calum Webb is a sociologist with specialisation in data science, quantitative research, and statistical methods. He has worked on research projects ranging from national £500,000+ multi‐institution studies, to small projects that deliver rapid findings and impact. His research topics include child welfare, poverty, and social policy, particularly the funding of children’s services. His work has been cited by the Department for Education, Ofsted, and the National Audit Office, and is published in many top‐ranking journals.</description>
+    </item>
     
   </channel>
 </rss>

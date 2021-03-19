@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Cvs on Calum Webb</title>
+    <link>/cv/</link>
+    <description>Recent content in Cvs on Calum Webb</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-gb</language>
+    <copyright>© Copyright Calum Webb 2019 - 2020</copyright>
+    <lastBuildDate>Wed, 04 Dec 2019 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="/cv/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Résumé / CV</title>
+      <link>/cv/resume-cv/</link>
+      <pubDate>Wed, 04 Dec 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/cv/resume-cv/</guid>
+      <description>  Some stuff about me  I poisoned myself doing research. I was the first woman to win a Nobel prize I was the first person and only woman to win a Nobel prize in two different sciences.   Education   Degree  Year  Institution  Where      Informal studies  1889-91  Flying University  Warsaw, Poland    Master of Physics  1893  Sorbonne Université  Paris, France    Master of Mathematics  1894  Sorbonne Université  Paris, France      </description>
+    </item>
+    
+  </channel>
+</rss>

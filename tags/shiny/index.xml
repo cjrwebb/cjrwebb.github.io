@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>shiny on Calum Webb</title>
+    <link>/tags/shiny/</link>
+    <description>Recent content in shiny on Calum Webb</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-gb</language>
+    <copyright>© Copyright Calum Webb 2019 - 2020</copyright>
+    <lastBuildDate>Sun, 02 Aug 2020 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="/tags/shiny/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>The Child Welfare Inequalities App Version 2: Now in Open Beta</title>
+      <link>/posts/cwip-app-v2-launch/</link>
+      <pubDate>Sun, 02 Aug 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/posts/cwip-app-v2-launch/</guid>
+      <description>Click here to go directly to the CWIP App Version 2 Beta. For a brief overview, read on…
+
+It’s been a year since I started working on the first version of the Child Welfare Inequalities Project App. The purpose of the app was to help social workers, policymakers, local government, activists - anyone, really - with the task of representing trends and patterns in, and pulling out basic statistics from, children’s services data.</description>
+    </item>
+    
+    <item>
+      <title>Citations Grabber</title>
+      <link>/posts/citations-grabber/</link>
+      <pubDate>Sat, 06 Jun 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/posts/citations-grabber/</guid>
+      <description>Presumably the anxiety stored somewhere in my unconscious has prompted me to spend this weekend automating the process of adding publications, citation statistics, and employment and education details to my CV, as well as implementing a system where things like teaching, reports not tracked by Google Scholar, and other miscellaneous bobbins can be stored more easily in a database, ready to be updated and sorted.
+I quite like the end result, which you can see using the Resume/CV link above.</description>
+    </item>
+    
+  </channel>
+</rss>

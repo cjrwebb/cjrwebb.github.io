@@ -1,0 +1,477 @@
+---
+title: Preprocessing quantiles and colourscales for mapping local data efficiently with `plotly` and `mapbox`
+author: Calum Webb
+date: '2020-01-18'
+description: "A brief tutorial for creating data overlays using plotly and mapbox without relying on split, which causes slow rendering times for complex maps."
+slug: mapping-local-data-efficiently-with-plotly-and-mapbox
+categories:
+  - R
+  - spatial
+tags:
+  - R
+  - plotly
+  - spatial
+draft: yes
+---
+
+```{r setup, include = FALSE}
+library(tidyverse)
+library(plotly)
+library(sf)
+library(mltools)
+library(RColorBrewer)
+library(lazyeval)
+library(rlang)
+
+mapbox_access_token = "pk.eyJ1IjoiZHJjYWx1bXdlYmIiLCJhIjoiY2s1NXF4aDl3MGJ5bTNvcGM3N3FxM202ZiJ9.MDz2xreMNIPGfh9LYgQ3uQ"
+Sys.setenv('MAPBOX_TOKEN' = mapbox_access_token)
+
+bin_variable <- function(data, variable, la, nbins = 10) {
+  require("dplyr")
+  require("lazyeval")
+  require("mltools")
+  
+  variable = enquo(variable)
+  variable_st = get_expr(variable)
+  nbins = nbins
+  
+  # filter data
+  filtered_data <- data %>% filter(LA_name %in% la)
+  
+  var_binned <- filtered_data %>% mutate(
+    binned_var = bin_data(round(!!variable, 3), bins = nbins, binType = "quantile")
+  ) %>%
+    mutate(
+      binned_var = str_replace_all(binned_var, "\\,", " -")
+    ) %>%
+    mutate(
+      binned_var = str_remove(binned_var, "\\[")
+    ) %>%
+    mutate(
+      binned_var = str_remove(binned_var, "\\]")
+    ) %>%
+    mutate(
+      binned_var = str_remove(binned_var, "\\(|\\)")
+    ) %>%
+    mutate(
+      binned_var = paste0(variable_st, ": ", binned_var)
+    )
+  
+  # Write 10 bins version of bins
+  var_binned  <- var_binned %>% mutate(
+    bin_upper = as.numeric(str_extract(binned_var, "(?<=- )[0-9]*.*"))
+  )
+
+  # Join numerically ordered bins (for sorting)
+  # bin_lth_lookup <- tibble("bin_upper" = unique(sort(var_binned$bin_upper)),
+  #                          "bin_low_high" = seq(1, length(unique(var_binned$bin_upper)), 1))
+  
+  bin_lth_lookup <- tibble("bin_upper" = unique(sort(var_binned$bin_upper))) %>%
+    arrange(bin_upper)
+  
+  bin_lth_lookup <- bin_lth_lookup %>% mutate(bin_low_high = as.numeric(rownames(bin_lth_lookup)))
+
+  var_binned <- var_binned %>% left_join(bin_lth_lookup, by = "bin_upper")
+
+  # Create dynamic colour lookup with rcolorbrewer and ramp
+  bin_col_lookup <- tibble(
+    "bin_low_high" = seq(1, length(unique(var_binned$bin_upper)), 1),
+    "bin_colour" = colorRampPalette(brewer.pal(11, "Spectral"))(length(unique(var_binned$bin_upper)))
+  )
+
+  var_binned <- var_binned %>% left_join(bin_col_lookup,
+                                         by = "bin_low_high") %>%
+    mutate(
+      binned_var = paste0("<br>Bin ", bin_low_high, ": <br>", binned_var, "<br>")
+    )
+
+ return(var_binned)
+
+}
+
+univariate_scale <- function(nbins) {
+  nbins = nbins
+  
+  univariate_scale <- tibble(
+    bin_low_high = seq(1, nbins, 1),
+    bin_col_scale = colorRampPalette(brewer.pal(11, "Spectral"))(nbins)
+  )
+  
+  return(univariate_scale)
+  
+}
+
+draw_univariate_map  <- function(data, x, nbins, la) {
+  require("dplyr")
+  require("lazyeval")
+  require("mltools")
+  require("plotly")
+  
+  x <- enquo(x)
+  x_st <- get_expr(x)
+    
+  # Create bins
+  data <- bin_variable(data, !!x, la, nbins)
+    
+    
+    # Create colour scale for bins
+    univariate_col_lookup_dt <- left_join(univariate_scale(nbins), 
+                                        data %>%
+                                          group_by(binned_var) %>%
+                                          summarise(
+                                            bin_low_high = first(bin_low_high)
+                                          ),
+                                        by = "bin_low_high"
+                                      ) %>%
+                                drop_na()
+    
+    
+    # Create lookup vector for colour scale that can be read by Plotly
+    univariate_col_lookup <- setNames(c(univariate_col_lookup_dt$bin_col_scale), 
+                                      univariate_col_lookup_dt$binned_var)
+    
+    # Create plot - could do quantile version but wouldn't work with some data
+    plot_mapbox(data,
+                alpha = 0.6,
+                alpha_stroke = 0.1,
+                color = ~binned_var,
+                colors = univariate_col_lookup,
+                text = ~paste(x_st, ": ", round(eval(parse(text = x_st)), 2), "<br>",
+                              "<b>", msoa11hclnm, "</b>", sep = ""),
+                hovertemplate = paste("%{text}<extra></extra>"),
+                showlegend = FALSE
+    ) %>%
+      layout(
+        mapbox = list(zoom = 8,
+                      style = "mapbox://styles/drcalumwebb/ck55r34nt00yh1dol4wfi3xi4",
+                      accesstoken = mapbox_access_token)
+      )
+
+}
+
+```
+
+```{r, echo = FALSE, fig.cap="Accessibility to GP Surgeries in Sheffield (Blue/Green = High Accessibility; Red/Orange = Low Accessibility)"}
+
+lsoa_data <- read_rds("lsoa_example_data.Rds")
+
+draw_univariate_map(lsoa_data, x = AccssbltGP, nbins = 20, la = "Sheffield")
+  
+```
+
+__This post is still a draft. Please excuse any spelling mistakes or grammatical errors.__
+
+I released the [Mapping Overlaps Gadget](http://webb.shinyapps.io/MappingOverlapsGadget/) last weekend. It's an app built in `Shiny` that uses `Plotly` to create interactive maps of local authorities in England and Wales with colour-coded overlays of LSOA-level data. One of the more difficult things to do was convince the `plot_mapbox` function to play nicely with these overlays.
+
+By default, the `plot_mapbox` function doesn't create polygons that overlay the map like you would expect intuitively. To get it to recognise that each polygon has unique data associated with it you have to group the data using the `split` argument. Only after doing this can you pass an argument to colour the polygon using the values of another variable.
+
+However, using the `split` function results in really slow rendering times for the final plot: far too slow for a snappy interactive app (see the example below: refresh your page and watch how fast each plot generates once they start loading). Further, the inbuilt functions in `plotly` seem to limit you to explicit bins - breaks in the colour scale are based on equal distances between the maximum and minimum values on the whole scale. There are good reasons why you might not want this.
+
+The brief tutorial below shows you how I created a couple of functions to manually preprocess quantile values, names, and create flexible colour scales to pass directly onto `plotly` with a colourscale lookup, rather than making `plotly` do the work as plots render using the `split` argument. 
+
+
+### Pre-processed versus built-in colour fills: left = pre-processed, right = built-in
+```{r}
+
+
+built_in <- plot_mapbox(lsoa_data,
+                alpha = 0.6,
+                alpha_stroke = 0.1,
+                showlegend = FALSE,
+                split = ~LSOA11CD,
+                color = ~AccssbltGP,
+                colors = "Spectral",
+                showlegend = FALSE
+                  ) %>%
+                    layout(
+                      mapbox = list(zoom = 8,
+                                    style = "mapbox://styles/drcalumwebb/ck55r34nt00yh1dol4wfi3xi4",
+                                    accesstoken = mapbox_access_token
+                                    )
+                    ) %>% hide_colorbar()
+
+preproc <- draw_univariate_map(lsoa_data, x = AccssbltGP, nbins = 20, la = "Sheffield") 
+
+subplot(preproc, built_in)
+
+```
+
+### Benefits and disadvantages of each:
+
+* _Built-in:_
+
+  * Much less code, only a couple of extra arguments in the `plot_mapbox` function.
+  * Faster processing in R but slower rendering time due to `split` argument.
+  * Convenient for quick interactive plots using a static set of data and variables, but frustratingly slow when number of groups is high or plot is used in a reactive plotting tool (e.g. a `Shiny` app)
+  * Default behaviour is to create equally spaced bins between min and max, not to create quantiles, which may not always be desirable (see [Andy Bell, Todd Hartman, Aneta Piekut, Alasdair Rae and Mark Taylor's new book 'Making Sense of Data in the Media' for an overview](https://www.amazon.co.uk/Making-Sense-Data-Media-Andrew-ebook/dp/B07T3F2MZ6))
+
+* _Pre-processed:_
+
+  * Requires additional custom functions to create quantiles and then manually assign a colour from a `rcolorbrewer` generated colourscale.
+  * Much faster rendering times because areas do not have to be split into groups.
+  * Easy to switch between quantile and explicit bins using `mltools::bin_data()" arguments. Empty quantiles are also discarded, reducing error messages when quantile ranges aren't unique.
+  * Not needing data to be processed by group makes pre-processed plotly_mapbox plotting better suited for large numbers of polygons overlayed on the map. 
+
+
+# Tutorial: Pre-processing quantiles and colourscales for plotting spatial data in `plotly`
+
+If you would like to follow this tutorial in R you can download the example data [here](https://www.dropbox.com/s/h1few9p6ej7l6px/lsoa_example_data.Rds?dl=0). In this example we'll be using the 'Accessibility to GP Score" from the Accessibility to Healthy Habits and Hazards (2017) dataset. This has been coded so that a higher score on the accessibility to GP score means that there is better access to GPs in an area. 
+
+For plotting data using plotly_mapbox you will meed an access token for the mapbox API. This is free and you can get one by going to [mapbox.com](https://www.mapbox.com).
+
+We make use of the following libraries for data tidying, creating functions, and plotting the data. So let's start by loading those libraries and reading in the data.:
+
+```{r, results = FALSE}
+
+library(tidyverse)
+library(plotly)
+library(sf)
+library(mltools)
+library(RColorBrewer)
+library(lazyeval)
+library(rlang)
+
+lsoa_data <- read_rds("lsoa_example_data.Rds")
+
+```
+
+Let's break down the preprocessing of data that we want to do:
+
+* Break our variable down into quantiles
+* Create a scale of colours to assign to each group in that quantile
+* Create a plotly function that passes the quantiles and their colour scale lookups to a plotly map
+
+First, we're going to use the `bin_data()` function from the `mltools` package by Ben Gorman. We could use the built in `quantile()` function, but this does not handle non-unqiue quantiles very well, giving an error rather than adjusting the number of quantiles down to something that gives only unique quantiles. `bin_data()` is much more flexible and able to handle things like rare events in a sensible way.
+
+
+### Creating numeric quantiles and dynamic colours from `RColorBrewer` using `bin_data()`
+
+Our new function, bin_variable, is broken down into a few chunks with `...` separating each part:
+
+```{r results = FALSE, eval = FALSE}
+bin_variable <- function(data, variable, la, nbins = 10) {
+  require("dplyr")
+  require("lazyeval")
+  require("mltools")
+  
+  variable = enquo(variable)
+  variable_st = get_expr(variable)
+  nbins = nbins
+  
+  ...
+
+
+```
+
+First we specify our function. In this case, I want the function to work by taking the data, name of the variable, name of a local authority (if I have a dataset with all local authorities in it), and an optional argument for the number of bins/quantiles that I'd like it to create. 
+
+In this first part we use the `enquo()` function and the `get_expr()` function from the `rlang` package to make it easier for me to write some of the code in the function. I find this much easier as my programming isn't excellent and I prefer variables to be written into functions not as a string - I think it looks nicer and it fits better in the `tidyverse` function style.
+
+In this first part we basically just turn our arguments from the function into some easier to work with objects. 
+
+```{r results = FALSE, eval = FALSE}
+...
+
+# filter data
+  filtered_data <- data %>% filter(LA_name %in% la)
+  
+  var_binned <- filtered_data %>% mutate(
+    binned_var = bin_data(round(!!variable, 3), bins = nbins, binType = "quantile")
+  ) %>%
+    mutate(
+      binned_var = str_replace_all(binned_var, "\\,", " -")
+    ) %>%
+    mutate(
+      binned_var = str_remove(binned_var, "\\[")
+    ) %>%
+    mutate(
+      binned_var = str_remove(binned_var, "\\]")
+    ) %>%
+    mutate(
+      binned_var = str_remove(binned_var, "\\(|\\)")
+    ) %>%
+    mutate(
+      binned_var = paste0(variable_st, ": ", binned_var)
+    )
+  
+  # Write 10 bins version of bins
+  var_binned  <- var_binned %>% mutate(
+    bin_upper = as.numeric(str_extract(binned_var, "(?<=- )[0-9]*.*"))
+  )
+  
+    # Join numerically ordered bins (for sorting)
+  
+  bin_lth_lookup <- tibble("bin_upper" = unique(sort(var_binned$bin_upper))) %>%
+    arrange(bin_upper)
+  
+  bin_lth_lookup <- bin_lth_lookup %>% mutate(bin_low_high = as.numeric(rownames(bin_lth_lookup)))
+
+  var_binned <- var_binned %>% left_join(bin_lth_lookup, by = "bin_upper")
+
+  ...
+
+```
+
+This next part gets a bit more complicated. We start by filtering the data by the local authority or authorities that are selected, since it makes no sense to increase our processing time on the entire dataset before filtering out the majority of it. This does have one important consequence, however, in that it means tha quantiles that are produced will be quantiles __within__ the local authority, not national quantiles. If you wanted to create an alternative version of this for national/full dataset quantiles you may want to move the filter to the end.
+
+The second part of this bit of the function creates the quantiles based on the number of unique quantiles the user requested. Following this are a string of pipes with `mutate()` functions for tidying the `binned_var` column we created.
+
+By default, the `bin_data` function creates a character variable with unique strings for each quantile which are structured like "[30.4, 50.1)". I'm not entirely sure what the intuition behind this is, but it's not very useful for us so we need to do quite a bit of string manipulation using `stringr` from the `tidyverse` collection of packages to get what we want. We start by using `str_replace_all` and `str_remove` to swap out the comma for a hyphen and remove the square brackets and parentheses. We also add the variable name to our string so we can identify it.
+
+The next part uses the `str_extract` function, nested in a `as.numeric` function, to extract the upper end of the quantile that was generated from the string. We do this by using a look forward regular expression - extracting any combination of numbers before and after a full stop after the hyphen in each string (this regex is: "(?<=- )[0-9]\*.\*"). Regex is basically witchcraft.
+
+Finally, this gives us an additional variable, `bin_upper` which is numeric and can be sorted correctly and consistently to create a continuous colour scale (rather than a nominal one). 
+
+We want to create a lookup table of these bins so we can assign a much more traditional quantile number to identify them (e.g. lowest quantile = 1, highest = 10). We do this by creating a tibble of the unique `bin_upper` values, of which there should be the same number as the number of bins we specified. We then arrange it from lowest to highest and then assign them numbers by creating a new column based on the row names (which is a number by default). So the lowest upper value for each bin is given the values 1...n. This is more consistent at avoiding errors when bins have to be discarded than using a `seq()` function. We call this `bin_low_high`
+
+Lastly, we join these numeric values of the bins to our data using a `left_join()`.
+
+
+
+```{r results = FALSE, eval = FALSE}
+ ...
+
+  # Create dynamic colour lookup with rcolorbrewer and ramp
+  bin_col_lookup <- tibble(
+    "bin_low_high" = seq(1, length(unique(var_binned$bin_upper)), 1),
+    "bin_colour" = colorRampPalette(brewer.pal(11, "Spectral"))(length(unique(var_binned$bin_upper)))
+  )
+
+  var_binned <- var_binned %>% left_join(bin_col_lookup,
+                                         by = "bin_low_high") %>%
+    mutate(
+      binned_var = paste0("<br>Bin ", bin_low_high, ": <br>", binned_var, "<br>")
+    )
+
+ return(var_binned)
+  
+}  
+  
+```
+
+Finally, we need to create a lookup table that contains the hex colours we would like to apply to each bin. We could just use `brewer.pal()` here, but `RColorBrewer` palettes have a maximum allowed number of bins. Because we would like to be able to specify as many bins as we like we need to use `colorRampPalette()` function to interpolate colours between the specified `RColorBrewer` palette. Finally, we join these colours using a `left_join` and add a little more information to our `binned_var` character name. The final object that is returned is our dataset with the additional variables: `binned_var <chr>`, `bin_low_high <dbl>`, and `bin_colour <chr>`, the last one contains our colours based on the quantile values of our chosen variable.
+
+### A small function for a separate colour scale for creating a named palette for `plotly`
+```{r results = FALSE, eval = FALSE}
+
+univariate_scale <- function(nbins) {
+  nbins = nbins
+  
+  univariate_scale <- tibble(
+    bin_low_high = seq(1, nbins, 1),
+    bin_col_scale = colorRampPalette(brewer.pal(11, "Spectral"))(nbins)
+  )
+  
+  return(univariate_scale)
+  
+}
+
+```
+
+The above code snippet creates a function that returns a simple colour palette for each numeric bin identity using the same tools as the previous function. This is needed because plotly takes its colors argument from a named vector. We will use this in the next function for creating a vector of colour scales linked by their binned_var names.
+
+### Creating a function for `plot_mapbox` that generates named bins and assigns them colours from a user-specified colour scale
+
+```{r results = FALSE, eval = FALSE}
+draw_univariate_map  <- function(data, x, nbins, la) {
+  require("dplyr")
+  require("lazyeval")
+  require("mltools")
+  require("plotly")
+  
+  x <- enquo(x)
+  x_st <- get_expr(x)
+    
+  # Create bins
+  data <- bin_variable(data, !!x, la, nbins)
+    
+    
+    # Create colour scale for bins
+    univariate_col_lookup_dt <- left_join(univariate_scale(nbins), 
+                                        data %>%
+                                          group_by(binned_var) %>%
+                                          summarise(
+                                            bin_low_high = first(bin_low_high)
+                                          ),
+                                        by = "bin_low_high"
+                                      ) %>%
+                                drop_na()
+    
+    
+    # Create lookup vector for colour scale that can be read by Plotly
+    univariate_col_lookup <- setNames(c(univariate_col_lookup_dt$bin_col_scale), 
+                                      univariate_col_lookup_dt$binned_var)
+    
+    # Create plot - could do quantile version but wouldn't work with some data
+    plot_mapbox(data,
+                alpha = 0.6,
+                alpha_stroke = 0.1,
+                color = ~binned_var,
+                colors = univariate_col_lookup,
+                text = ~paste(x_st, ": ", round(eval(parse(text = x_st)), 2), "<br>",
+                              "<b>", msoa11hclnm, "</b>", sep = ""),
+                hovertemplate = paste("%{text}<extra></extra>"),
+                showlegend = FALSE
+    ) %>%
+      layout(
+        mapbox = list(zoom = 8,
+                      style = "mapbox://styles/drcalumwebb/ck55r34nt00yh1dol4wfi3xi4",
+                      accesstoken = mapbox_access_token)
+      )
+
+}
+```
+
+Lastly we combine the two functions we created with the `plot_mapbox` plotting function to create a new function that automatically takes a variables, breaks it into the specified number of bins, creates a colour scale lookup, and plots the data using mapbox. 
+
+The magic behind this is that we are still passing a categorical string to `plotly` with the argument `color = ~binned_var`, however we then tell it to look up the colour that we assign to the points and shapes on the map by looking in our colour lookup using `colors = univariate_col_lookup`. This lookup creates a named vector of our unique quantile names that looks like this:
+
+```{r echo = FALSE}
+
+colscale_example  <- function(data, x, nbins, la) {
+  require("dplyr")
+  require("lazyeval")
+  require("mltools")
+  require("plotly")
+  
+  x <- enquo(x)
+  x_st <- get_expr(x)
+    
+  # Create bins
+  data <- bin_variable(data, !!x, la, nbins)
+    
+    
+    # Create colour scale for bins
+    univariate_col_lookup_dt <- left_join(univariate_scale(nbins), 
+                                        data %>%
+                                          group_by(binned_var) %>%
+                                          summarise(
+                                            bin_low_high = first(bin_low_high)
+                                          ),
+                                        by = "bin_low_high"
+                                      ) %>%
+                                drop_na()
+    
+    
+    # Create lookup vector for colour scale that can be read by Plotly
+    univariate_col_lookup <- setNames(c(univariate_col_lookup_dt$bin_col_scale), 
+                                      univariate_col_lookup_dt$binned_var)
+    
+    return(univariate_col_lookup)
+    
+}
+
+colscale_example(lsoa_data, AccssbltGP, nbins = 10, "Sheffield")
+
+
+```
+
+This makes it much easier to render the map since `plotly` isn't actually having to do any processing to create a colour scale, we just tell it to match the string to the colour, the decision on what each colour should be linked to the quantile's numeric value was decided already in the preprocessing of the data. 
+
+```{r}
+draw_univariate_map(lsoa_data, x = AccssbltGP, nbins = 20, la = "Sheffield") 
+```
+
+Using quantiles rather than explicit breaks, as plotly does using its built-in capabilities, also shows us that a some areas of Sheffield also have relative low levels of access to GP surgeries which is obscured by the explicit bins because one or two rural LSOAs have tremendously low access (rural Bradfield in the Peak District). For example, Beighton, Jordonthorpe, Gleadless, Chapeltown and High Green have relatively poor accessibility to GP Surgeries according to the AHAH 2017 data. 
+
+Obviously this is a lot more work, but these two functions can be adapted relatively quickly if needed as the transformations involved aren't too complicated. 
