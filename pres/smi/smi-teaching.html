@@ -1,0 +1,622 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>Introducing hypothesis testing and statistical inference</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="Calum Webb" />
+    <meta name="date" content="2021-07-11" />
+    <script src="smi-teaching_files/header-attrs/header-attrs.js"></script>
+    <link href="smi-teaching_files/tile-view/tile-view.css" rel="stylesheet" />
+    <script src="smi-teaching_files/tile-view/tile-view.js"></script>
+    <link href="smi-teaching_files/panelset/panelset.css" rel="stylesheet" />
+    <script src="smi-teaching_files/panelset/panelset.js"></script>
+    <script src="smi-teaching_files/xaringanExtra-progressBar/progress-bar.js"></script>
+    <link rel="stylesheet" href="xaringan-themer.css" type="text/css" />
+    <link rel="stylesheet" href="custom.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+
+
+class: middle
+background-size: contain
+
+# .tuos_purple[Introducing hypothesis testing and statistical inference.]
+
+### Dr. Calum Webb, the University of Sheffield.
+#### c.j.webb@sheffield.ac.uk
+
+
+
+
+
+<div>
+<style type="text/css">.xaringan-extra-logo {
+width: 110px;
+height: 128px;
+z-index: 0;
+background-image: url(images/uni-sheffield.png);
+background-size: contain;
+background-repeat: no-repeat;
+position: absolute;
+top:1em;right:1em;
+}
+</style>
+<script>(function () {
+  let tries = 0
+  function addLogo () {
+    if (typeof slideshow === 'undefined') {
+      tries += 1
+      if (tries < 10) {
+        setTimeout(addLogo, 100)
+      }
+    } else {
+      document.querySelectorAll('.remark-slide-content:not(.inverse):not(.hide_logo)')
+        .forEach(function (slide) {
+          const logo = document.createElement('div')
+          logo.classList = 'xaringan-extra-logo'
+          logo.href = null
+          slide.appendChild(logo)
+        })
+    }
+  }
+  document.addEventListener('DOMContentLoaded', addLogo)
+})()</script>
+</div>
+
+
+
+
+
+<style>.xe__progress-bar__container {
+  top:0;
+  opacity: 1;
+  position:absolute;
+  right:0;
+  left: 0;
+}
+.xe__progress-bar {
+  height: 0.25em;
+  background-color: #019EE3;
+  width: calc(var(--slide-current) / var(--slide-total) * 100%);
+}
+.remark-visible .xe__progress-bar {
+  animation: xe__progress-bar__wipe 200ms forwards;
+  animation-timing-function: cubic-bezier(.86,0,.07,1);
+}
+@keyframes xe__progress-bar__wipe {
+  0% { width: calc(var(--slide-previous) / var(--slide-total) * 100%); }
+  100% { width: calc(var(--slide-current) / var(--slide-total) * 100%); }
+}</style>
+
+
+---
+class: middle
+
+# Learning outcomes
+
+.panelset[
+
+.panel[.panel-name[What will I learn?]
+
+By the end of this week you will:
+
+* LO1: **Gain an intuitive understanding of and be able to explain the purpose of hypothesis tests and some of their shared statistical terms, crucially, p-values and statistical significance.**
+* LO2: Be able to interpret the output from a simple inferential statistical test - the chi-squared goodness-of-fit test - and use this to decide whether to reject or fail to reject a null hypothesis.
+* LO3: Be able to perform a chi-square goodness-of-fit test in `R`, using some of the skills you have developed in the previous weeks.
+* LO4: Practice applying this method to an analysis of real-world data, using the findings to draw research conclusions.
+* LO5: Reflect on how this method could be used in a real-world research project.
+
+]
+
+.panel[.panel-name[What existing skills will I be using?]
+
+To achieve this week's learning outcomes, we will be using the following skills from previous weeks across the programme:
+
+* __Descriptive statistics and data distributions (SMI106, Week N)__ - LO1, LO2
+* __Samples and populations (SMI108, Week N)__ - LO1, LO2
+* __Interpreting data visualisation - histograms (SMI105, Week N)__ - LO1, LO2
+* Setting up an `R` project (SMI106, Week N) - LO3, LO4
+* Reading data in `R` (SMI106, Week N) - LO3, LO4
+* Creating summary statistics for categorical variables in `R` (SMI106, Week N) - LO3, LO4
+* Research project design (SMI107, Week X) - LO4, LO5
+
+
+]
+
+.panel[.panel-name[How does this week fit into my course?]
+
+&gt; To develop undergraduate social science students’ skills in quantitative data analysis;
+
+* Before this week, you developed skills to understand how to describe data, including its central tendency (means, medians, modes) and distribution (range, standard deviation), visually and numerically.
+* This week will help you develop the foundational knowledge you need to understand *inferential statistics*, and the methods that quantitative social scientists rely on the create inferences about populations from representative samples. 
+* In the following weeks, the content of this lesson will help you understand more complex tests for statistical inference that can be used for analysis in quantitative research projects.
+
+
+&gt; To give students strong practical experience in the use of quantitative analytical techniques to address substantive social science problems. 
+
+* Before this week, you learned how to use `R` to read data, produce descriptive statistics and to visualise this data.
+* This week, you will use the `R` skills you have developed to run and interpret a test of statistical significance, you will then apply this to real-world social science data.
+* In the following weeks, you will use these skills to understand and interpret more complex inferential statistics, including bivariate tests of association.
+
+
+]
+
+
+
+]
+
+---
+
+class: inverse, middle
+
+# Last week we learned how to describe the different types of variables in sample data.
+
+
+---
+
+class: inverse, middle
+
+# But how can we be confident that a relationship or pattern in our data applies to the entire population we are interested in, and isn't just an artefact of our specific sample?
+
+---
+
+# Getting a feel for inferential statistics
+
+.pull-left[
+
+* If you'd like to join in, please scan the QR code, type in the URL, or click the link in chat and open the `Shiny` App for the exercise. &lt;svg viewBox="0 0 512 512" style="height:1em;position:relative;display:inline-block;top:.1em;" xmlns="http://www.w3.org/2000/svg"&gt;  &lt;path d="M512 144v288c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V144c0-26.5 21.5-48 48-48h88l12.3-32.9c7-18.7 24.9-31.1 44.9-31.1h125.5c20 0 37.9 12.4 44.9 31.1L376 96h88c26.5 0 48 21.5 48 48zM376 288c0-66.2-53.8-120-120-120s-120 53.8-120 120 53.8 120 120 120 120-53.8 120-120zm-32 0c0 48.5-39.5 88-88 88s-88-39.5-88-88 39.5-88 88-88 88 39.5 88 88z"&gt;&lt;/path&gt;&lt;/svg&gt;
+
+]
+
+.pull-right[
+
+![](images/chisq-qr-png.png)
+
+]
+
+---
+
+# Getting a feel for inferential statistics
+
+.pull-left[
+
+* If you'd like to join in, please scan the QR code, type in the URL, or click the link in chat and open the `Shiny` App for the exercise. &lt;svg viewBox="0 0 512 512" style="height:1em;position:relative;display:inline-block;top:.1em;" xmlns="http://www.w3.org/2000/svg"&gt;  &lt;path d="M512 144v288c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V144c0-26.5 21.5-48 48-48h88l12.3-32.9c7-18.7 24.9-31.1 44.9-31.1h125.5c20 0 37.9 12.4 44.9 31.1L376 96h88c26.5 0 48 21.5 48 48zM376 288c0-66.2-53.8-120-120-120s-120 53.8-120 120 53.8 120 120 120 120-53.8 120-120zm-32 0c0 48.5-39.5 88-88 88s-88-39.5-88-88 39.5-88 88-88 88 39.5 88 88z"&gt;&lt;/path&gt;&lt;/svg&gt;
+
+* Each of you have been given a (virtual) die that you can roll as many times as you like. &lt;svg viewBox="0 0 640 512" style="height:1em;position:relative;display:inline-block;top:.1em;" xmlns="http://www.w3.org/2000/svg"&gt;  &lt;path d="M592 192H473.26c12.69 29.59 7.12 65.2-17 89.32L320 417.58V464c0 26.51 21.49 48 48 48h224c26.51 0 48-21.49 48-48V240c0-26.51-21.49-48-48-48zM480 376c-13.25 0-24-10.75-24-24 0-13.26 10.75-24 24-24s24 10.74 24 24c0 13.25-10.75 24-24 24zm-46.37-186.7L258.7 14.37c-19.16-19.16-50.23-19.16-69.39 0L14.37 189.3c-19.16 19.16-19.16 50.23 0 69.39L189.3 433.63c19.16 19.16 50.23 19.16 69.39 0L433.63 258.7c19.16-19.17 19.16-50.24 0-69.4zM96 248c-13.25 0-24-10.75-24-24 0-13.26 10.75-24 24-24s24 10.74 24 24c0 13.25-10.75 24-24 24zm128 128c-13.25 0-24-10.75-24-24 0-13.26 10.75-24 24-24s24 10.74 24 24c0 13.25-10.75 24-24 24zm0-128c-13.25 0-24-10.75-24-24 0-13.26 10.75-24 24-24s24 10.74 24 24c0 13.25-10.75 24-24 24zm0-128c-13.25 0-24-10.75-24-24 0-13.26 10.75-24 24-24s24 10.74 24 24c0 13.25-10.75 24-24 24zm128 128c-13.25 0-24-10.75-24-24 0-13.26 10.75-24 24-24s24 10.74 24 24c0 13.25-10.75 24-24 24z"&gt;&lt;/path&gt;&lt;/svg&gt;
+
+]
+
+.pull-right[
+
+![](images/chisq-qr-png.png)
+
+]
+
+---
+
+# Getting a feel for inferential statistics
+
+.pull-left[
+
+* If you'd like to join in, please scan the QR code, type in the URL, or click the link in chat and open the `Shiny` App for the exercise. &lt;svg viewBox="0 0 512 512" style="height:1em;position:relative;display:inline-block;top:.1em;" xmlns="http://www.w3.org/2000/svg"&gt;  &lt;path d="M512 144v288c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V144c0-26.5 21.5-48 48-48h88l12.3-32.9c7-18.7 24.9-31.1 44.9-31.1h125.5c20 0 37.9 12.4 44.9 31.1L376 96h88c26.5 0 48 21.5 48 48zM376 288c0-66.2-53.8-120-120-120s-120 53.8-120 120 53.8 120 120 120 120-53.8 120-120zm-32 0c0 48.5-39.5 88-88 88s-88-39.5-88-88 39.5-88 88-88 88 39.5 88 88z"&gt;&lt;/path&gt;&lt;/svg&gt;
+
+* Each of you have been given a (virtual) die that you can roll as many times as you like. &lt;svg viewBox="0 0 640 512" style="height:1em;position:relative;display:inline-block;top:.1em;" xmlns="http://www.w3.org/2000/svg"&gt;  &lt;path d="M592 192H473.26c12.69 29.59 7.12 65.2-17 89.32L320 417.58V464c0 26.51 21.49 48 48 48h224c26.51 0 48-21.49 48-48V240c0-26.51-21.49-48-48-48zM480 376c-13.25 0-24-10.75-24-24 0-13.26 10.75-24 24-24s24 10.74 24 24c0 13.25-10.75 24-24 24zm-46.37-186.7L258.7 14.37c-19.16-19.16-50.23-19.16-69.39 0L14.37 189.3c-19.16 19.16-19.16 50.23 0 69.39L189.3 433.63c19.16 19.16 50.23 19.16 69.39 0L433.63 258.7c19.16-19.17 19.16-50.24 0-69.4zM96 248c-13.25 0-24-10.75-24-24 0-13.26 10.75-24 24-24s24 10.74 24 24c0 13.25-10.75 24-24 24zm128 128c-13.25 0-24-10.75-24-24 0-13.26 10.75-24 24-24s24 10.74 24 24c0 13.25-10.75 24-24 24zm0-128c-13.25 0-24-10.75-24-24 0-13.26 10.75-24 24-24s24 10.74 24 24c0 13.25-10.75 24-24 24zm0-128c-13.25 0-24-10.75-24-24 0-13.26 10.75-24 24-24s24 10.74 24 24c0 13.25-10.75 24-24 24zm128 128c-13.25 0-24-10.75-24-24 0-13.26 10.75-24 24-24s24 10.74 24 24c0 13.25-10.75 24-24 24z"&gt;&lt;/path&gt;&lt;/svg&gt;
+
+* When you load the app, it will assign you either a **fair** die, or a **loaded die**. A loaded die will roll some numbers more often than others. &lt;svg viewBox="0 0 640 512" style="height:1em;position:relative;display:inline-block;top:.1em;" xmlns="http://www.w3.org/2000/svg"&gt;  &lt;path d="M96 464v32c0 8.84 7.16 16 16 16h224c8.84 0 16-7.16 16-16V153.25c4.56-2 8.92-4.35 12.99-7.12l142.05 47.63c8.38 2.81 17.45-1.71 20.26-10.08l10.17-30.34c2.81-8.38-1.71-17.45-10.08-20.26l-128.4-43.05c.42-3.32 1.01-6.6 1.01-10.03 0-44.18-35.82-80-80-80-29.69 0-55.3 16.36-69.11 40.37L132.96.83c-8.38-2.81-17.45 1.71-20.26 10.08l-10.17 30.34c-2.81 8.38 1.71 17.45 10.08 20.26l132 44.26c7.28 21.25 22.96 38.54 43.38 47.47V448H112c-8.84 0-16 7.16-16 16zM0 304c0 44.18 57.31 80 128 80s128-35.82 128-80h-.02c0-15.67 2.08-7.25-85.05-181.51-17.68-35.36-68.22-35.29-85.87 0C-1.32 295.27.02 287.82.02 304H0zm56-16l72-144 72 144H56zm328.02 144H384c0 44.18 57.31 80 128 80s128-35.82 128-80h-.02c0-15.67 2.08-7.25-85.05-181.51-17.68-35.36-68.22-35.29-85.87 0-86.38 172.78-85.04 165.33-85.04 181.51zM440 416l72-144 72 144H440z"&gt;&lt;/path&gt;&lt;/svg&gt;
+
+]
+
+.pull-right[
+
+![](images/chisq-qr-png.png)
+
+]
+
+---
+
+# Getting a feel for inferential statistics
+
+.pull-left[
+
+* If you'd like to join in, please scan the QR code, type in the URL, or click the link in chat and open the `Shiny` App for the exercise. &lt;svg viewBox="0 0 512 512" style="height:1em;position:relative;display:inline-block;top:.1em;" xmlns="http://www.w3.org/2000/svg"&gt;  &lt;path d="M512 144v288c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V144c0-26.5 21.5-48 48-48h88l12.3-32.9c7-18.7 24.9-31.1 44.9-31.1h125.5c20 0 37.9 12.4 44.9 31.1L376 96h88c26.5 0 48 21.5 48 48zM376 288c0-66.2-53.8-120-120-120s-120 53.8-120 120 53.8 120 120 120 120-53.8 120-120zm-32 0c0 48.5-39.5 88-88 88s-88-39.5-88-88 39.5-88 88-88 88 39.5 88 88z"&gt;&lt;/path&gt;&lt;/svg&gt;
+
+* Each of you have been given a (virtual) die that you can roll as many times as you like. &lt;svg viewBox="0 0 640 512" style="height:1em;position:relative;display:inline-block;top:.1em;" xmlns="http://www.w3.org/2000/svg"&gt;  &lt;path d="M592 192H473.26c12.69 29.59 7.12 65.2-17 89.32L320 417.58V464c0 26.51 21.49 48 48 48h224c26.51 0 48-21.49 48-48V240c0-26.51-21.49-48-48-48zM480 376c-13.25 0-24-10.75-24-24 0-13.26 10.75-24 24-24s24 10.74 24 24c0 13.25-10.75 24-24 24zm-46.37-186.7L258.7 14.37c-19.16-19.16-50.23-19.16-69.39 0L14.37 189.3c-19.16 19.16-19.16 50.23 0 69.39L189.3 433.63c19.16 19.16 50.23 19.16 69.39 0L433.63 258.7c19.16-19.17 19.16-50.24 0-69.4zM96 248c-13.25 0-24-10.75-24-24 0-13.26 10.75-24 24-24s24 10.74 24 24c0 13.25-10.75 24-24 24zm128 128c-13.25 0-24-10.75-24-24 0-13.26 10.75-24 24-24s24 10.74 24 24c0 13.25-10.75 24-24 24zm0-128c-13.25 0-24-10.75-24-24 0-13.26 10.75-24 24-24s24 10.74 24 24c0 13.25-10.75 24-24 24zm0-128c-13.25 0-24-10.75-24-24 0-13.26 10.75-24 24-24s24 10.74 24 24c0 13.25-10.75 24-24 24zm128 128c-13.25 0-24-10.75-24-24 0-13.26 10.75-24 24-24s24 10.74 24 24c0 13.25-10.75 24-24 24z"&gt;&lt;/path&gt;&lt;/svg&gt;
+
+* When you load the app, it will assign you either a **fair** die, or a **loaded die**. A loaded die will roll some numbers more often than others. &lt;svg viewBox="0 0 640 512" style="height:1em;position:relative;display:inline-block;top:.1em;" xmlns="http://www.w3.org/2000/svg"&gt;  &lt;path d="M96 464v32c0 8.84 7.16 16 16 16h224c8.84 0 16-7.16 16-16V153.25c4.56-2 8.92-4.35 12.99-7.12l142.05 47.63c8.38 2.81 17.45-1.71 20.26-10.08l10.17-30.34c2.81-8.38-1.71-17.45-10.08-20.26l-128.4-43.05c.42-3.32 1.01-6.6 1.01-10.03 0-44.18-35.82-80-80-80-29.69 0-55.3 16.36-69.11 40.37L132.96.83c-8.38-2.81-17.45 1.71-20.26 10.08l-10.17 30.34c-2.81 8.38 1.71 17.45 10.08 20.26l132 44.26c7.28 21.25 22.96 38.54 43.38 47.47V448H112c-8.84 0-16 7.16-16 16zM0 304c0 44.18 57.31 80 128 80s128-35.82 128-80h-.02c0-15.67 2.08-7.25-85.05-181.51-17.68-35.36-68.22-35.29-85.87 0C-1.32 295.27.02 287.82.02 304H0zm56-16l72-144 72 144H56zm328.02 144H384c0 44.18 57.31 80 128 80s128-35.82 128-80h-.02c0-15.67 2.08-7.25-85.05-181.51-17.68-35.36-68.22-35.29-85.87 0-86.38 172.78-85.04 165.33-85.04 181.51zM440 416l72-144 72 144H440z"&gt;&lt;/path&gt;&lt;/svg&gt;
+
+* Our task is to use our data analysis skills to discover whether we have a fair or loaded die. &lt;svg viewBox="0 0 448 512" style="height:1em;position:relative;display:inline-block;top:.1em;" xmlns="http://www.w3.org/2000/svg"&gt;  &lt;path d="M383.9 308.3l23.9-62.6c4-10.5-3.7-21.7-15-21.7h-58.5c11-18.9 17.8-40.6 17.8-64v-.3c39.2-7.8 64-19.1 64-31.7 0-13.3-27.3-25.1-70.1-33-9.2-32.8-27-65.8-40.6-82.8-9.5-11.9-25.9-15.6-39.5-8.8l-27.6 13.8c-9 4.5-19.6 4.5-28.6 0L182.1 3.4c-13.6-6.8-30-3.1-39.5 8.8-13.5 17-31.4 50-40.6 82.8-42.7 7.9-70 19.7-70 33 0 12.6 24.8 23.9 64 31.7v.3c0 23.4 6.8 45.1 17.8 64H56.3c-11.5 0-19.2 11.7-14.7 22.3l25.8 60.2C27.3 329.8 0 372.7 0 422.4v44.8C0 491.9 20.1 512 44.8 512h358.4c24.7 0 44.8-20.1 44.8-44.8v-44.8c0-48.4-25.8-90.4-64.1-114.1zM176 480l-41.6-192 49.6 32 24 40-32 120zm96 0l-32-120 24-40 49.6-32L272 480zm41.7-298.5c-3.9 11.9-7 24.6-16.5 33.4-10.1 9.3-48 22.4-64-25-2.8-8.4-15.4-8.4-18.3 0-17 50.2-56 32.4-64 25-9.5-8.8-12.7-21.5-16.5-33.4-.8-2.5-6.3-5.7-6.3-5.8v-10.8c28.3 3.6 61 5.8 96 5.8s67.7-2.1 96-5.8v10.8c-.1.1-5.6 3.2-6.4 5.8z"&gt;&lt;/path&gt;&lt;/svg&gt;
+
+]
+
+.pull-right[
+
+![](images/chisq-qr-png.png)
+
+]
+
+
+---
+
+class: inverse, middle
+
+# .tuos_purple[Inferential statistics are a way of quantifying the confidence we have in a hypothesis] 
+
+### (e.g. that a die is fair, or that there is no relationship between two variables)
+
+
+---
+
+# Hypothesis testing
+
+.pull-left[
+
+**.tuos_purple[What are the chances we would see a sample of rolls like this...]**
+
+![](images/observed.png)
+
+&lt;center&gt;(Observed)&lt;/center&gt;
+
+]
+
+.pull-right[]
+
+---
+
+# Hypothesis testing
+
+.pull-left[
+
+**.tuos_purple[What are the chances we would see a sample of rolls like this...]**
+
+![](images/observed.png)
+
+&lt;center&gt;(Observed)&lt;/center&gt;
+
+]
+
+.pull-right[
+
+**.tuos_purple[When we know if the die were fair we would expect to see something like this...? (Null hypothesis)]**
+
+![](images/expected.png)
+
+&lt;center&gt;(Expected)&lt;/center&gt;
+
+
+]
+
+---
+
+# Hypothesis testing
+
+![](images/difference.png)
+
+???
+
+We can use a simple inferential statistics test, the chi-square goodness of fit test, to test whether these differences are 'statistically significant' or not -- how probable it is that the hypothesis that the die is fair is very probable given our sample.
+
+These results were from 60 rolls. Raise your hand if you would feel confident saying that the die is not fair? Is it a tricky one?
+
+---
+
+# Hypothesis testing
+
+
+.pull-left[
+
+A chi-squared statistic is calculated with the following formula:
+
+$$ \chi^2 = \sum \frac{(O_i - E_i)^2}{E_i} $$
+* Don't worry too much about the details! You won't have to calculate it by hand!
+
+
+]
+
+.pull-right[
+
+![](images/difference.png)
+![](images/chi-sq-small.png)
+
+
+]
+
+---
+
+
+# Hypothesis testing
+
+
+.pull-left[
+
+A chi-squared statistic is calculated with the following formula:
+
+$$ \chi^2 = \sum \frac{(O_i - E_i)^2}{E_i} $$
+
+* Don't worry too much about the details! You won't have to calculate it by hand!
+
+* The key thing to note that is that the chi-squared statistic is determined by the **size of the difference between what we observed** ( `\(O_i\)` ) **and what we would have expected** ( `\(E_i\)` ) under the null hypothesis that the die is fair.
+
+
+]
+
+.pull-right[
+
+![](images/difference.png)
+![](images/chi-sq-small.png)
+
+
+]
+
+---
+
+
+# Hypothesis testing
+
+
+.pull-left[
+
+A chi-squared statistic is calculated with the following formula:
+
+$$ \chi^2 = \sum \frac{(O_i - E_i)^2}{E_i} $$
+
+* Don't worry too much about the details! You won't have to calculate it by hand!
+
+* The key thing to note that is that the chi-squared statistic is determined by the **size of the difference between what we observed** ( `\(O_i\)` ) **and what we would have expected** ( `\(E_i\)` ) under the null hypothesis that the die is fair.
+
+* We are not particularly interested in the chi-squared statistic itself, but we are interested in its associated **p-value**.
+
+
+]
+
+.pull-right[
+
+![](images/difference.png)
+![](images/chi-sq-small.png)
+
+
+]
+
+---
+
+# Hypothesis testing
+
+
+.pull-left[
+
+&gt; A p-value gives the probability of observing a pattern or relationship in a sample of data at least as extreme as the one we observed, under the assumption that the null hypothesis is correct. 
+
+&gt; It is used in conjunction with a significance level (sometimes called 'alpha', typically 0.05) to determine whether our data suggests we should reject the null hypothesis.
+
+&lt;br&gt;
+
+Don't worry if that's tricky to grasp at first - you will become very familiar with p-values over the coming weeks!
+
+
+
+]
+
+.pull-right[
+
+![](images/difference.png)
+![](images/chi-sq-small.png)
+
+
+]
+
+---
+
+# Hypothesis testing
+
+
+.pull-left[
+
+In our sample of dice rolls shown here:
+
+* Our p-value is __0.1355__.
+
+
+]
+
+.pull-right[
+
+![](images/difference.png)
+![](images/chi-sq-small.png)
+
+
+]
+
+---
+
+# Hypothesis testing
+
+
+.pull-left[
+
+In our sample of dice rolls shown here:
+
+* Our p-value is __0.1355__.
+
+* This means that for this number of rolls (60) of a die with equal chances of landing on any number (our null hypothesis), __we would expect to see deviations this extreme from our expected distribution less than 13.55% of the time__.
+
+
+]
+
+.pull-right[
+
+![](images/difference.png)
+![](images/chi-sq-small.png)
+
+
+]
+
+---
+
+# Hypothesis testing
+
+
+.pull-left[
+
+In our sample of dice rolls shown here:
+
+* Our p-value is __0.1355__.
+
+* This means that for this number of rolls (60) of a die with equal chances of landing on any number (our null hypothesis), __we would expect to see deviations this extreme from our expected distribution less than 13.55% of the time__.
+
+* This is fairly improbable, but not so improbable that we could confidently say the die is not fair. In this case, __we do not reject the null hypothesis that the die is fair because 13.55% is higher than our threshold of 5%__.
+
+
+]
+
+.pull-right[
+
+![](images/difference.png)
+![](images/chi-sq-small.png)
+
+
+]
+
+---
+
+class: inverse, middle
+
+# Can you see how this statistic performs a similar function to our intuition when raising our hand when we feel confident that the die is or is not fair?
+
+
+---
+
+# Guided tutorial
+
+
+&lt;img src="images/workbook.png" width="100%" /&gt;
+
+???
+
+At this point I would move students on to a guided, sandbox r tutorial that they can complete and explore independently on their phones or in a lab. I would provide 20 minutes for this and use it as an opportunity to allow them to ask questions.
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"slideNumberFormat": "%current%",
+"highlightStyle": "github",
+"highlightLines": true,
+"sealed": false,
+"ratio": "16:9",
+"self_contained": true,
+"countIncrementalSlides": true
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>
