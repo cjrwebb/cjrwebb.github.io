@@ -26,6 +26,8 @@ background-size: contain
 ### Dr. Calum Webb, the University of Sheffield.
 #### c.j.webb@sheffield.ac.uk
 
+.small[Press P on your keyboard to view speaker's notes.]
+
 ```{r setup, include=FALSE}
 options(htmltools.dir.version = FALSE)
 library(icons)
@@ -78,6 +80,31 @@ xaringanExtra::use_panelset()
 ```{r xaringanExtra, echo = FALSE}
 xaringanExtra::use_progress_bar(color = "#019EE3", location = "top")
 ```
+
+```{r metathis, echo=FALSE}
+# Add metadata
+library(metathis)
+meta() %>%
+  meta_name("github-repo" = "cjrwebb/cjrwebb.github.io/tree/master/pres/smi") %>% 
+  meta_social(
+    title = "In Defence of Ordinary Help: The declining effectiveness of preventative children's services in England",
+    description = paste(
+      "On average, an additional £40 spent per child on preventative services in a given year was associated with decreases of nearly 5 children in need per 10,000, but this effectiveness has been declining over the decade."
+    ),
+    url = "https://cjrwebb.github.io/pres/smi/smi-research",
+    image = "https://cjrwebb.github.io/pres/smi/idoh-card.png",
+    image_alt = paste(
+      "Title slide of In Defence of Ordinary Help"
+    ),
+    og_type = "website",
+    og_author = "Calum Webb",
+    twitter_card_type = "summary_large_image",
+    twitter_creator = "@cjrwebb",
+    twitter_site = "@cjrwebb"
+  )
+```
+
+
 
 ---
 
