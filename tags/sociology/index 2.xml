@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>sociology on Calum Webb</title>
+    <link>/tags/sociology/</link>
+    <description>Recent content in sociology on Calum Webb</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-gb</language>
+    <copyright>© Copyright Calum Webb 2019 - 2020</copyright>
+    <lastBuildDate>Thu, 20 Aug 2020 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="/tags/sociology/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Socioeconomic inequalities in child welfare interventions are five times stronger in unequal and affluent local authorities than they are in equal and deprived local authorities. Why?</title>
+      <link>/posts/inequality-cwi/</link>
+      <pubDate>Thu, 20 Aug 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/posts/inequality-cwi/</guid>
+      <description>One of the articles we had published in Children and Youth Services Review this year highlighted a new finding that the social gradient in child welfare interventions was predicted to be as much as five times stronger in local authorities with both lower-than-average deprivation and higher-than-average income inequality than it was in local authorities with higher-than-average deprivation and lower-than-average income inequality. This blog post explores one reason why this might be.</description>
+    </item>
+    
+    <item>
+      <title>A few lines of code separate quantitative analysis from predictive analytics</title>
+      <link>/posts/a-few-lines-of-code/</link>
+      <pubDate>Thu, 13 Aug 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/posts/a-few-lines-of-code/</guid>
+      <description>An image of a dog wearing glasses, “typing” on a tablet computer.  The programming equivalent of a hair’s breadth stands between the code required to analyse trends, associations, and inequalities in data and the code required to turn these into contextless, essentialist predictions. This is, of course, something of a simplification - it may not hold true when talking about very complex machine learning models designed for producing images or sounds - but within the context of the kinds of predictive analytics used in governance, including the algorithm that caused A-level results chaos today, it is, essentially, true.</description>
+    </item>
+    
+    <item>
+      <title>Anti-racist and anti-poverty social work must be both: Child Welfare Inequalities at the intersection of race and class</title>
+      <link>/posts/anti-racist-and-anti-poverty-social-work-must-be-both/</link>
+      <pubDate>Wed, 05 Aug 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/posts/anti-racist-and-anti-poverty-social-work-must-be-both/</guid>
+      <description>Calum Webb, the University of Sheffield  This graph shows how existing ethnic disproportionality in child welfare interventions would affect the demographics of children taken into care in three differently deprived neighbourhoods if all had an equal size population from each ethnic group. You can see how, for example, Mixed Heritage (Other) children are over-represented in rates of children taken into care relative to their population size regardless of the level of deprivation, but their rates are also increasingly disproportionately high as deprivation increases.</description>
+    </item>
+    
+    <item>
+      <title>Ethnic Inequalities in Local Authority Children Looked After Rates (CWIP v2 Plots Preview)</title>
+      <link>/posts/ethnicity-cla/</link>
+      <pubDate>Wed, 29 Jul 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/posts/ethnicity-cla/</guid>
+      <description>The following are some charts that are created with a function that forms a new part of the Child Welfare Inequalities Project App. You can read our research on ethnic inequalities in intervention rates here (Open Access). We have just had a new article accepted in Children and Youth Services Review that extends this work further with intersectional population models, look out for an announcement on Twitter for when this is published.</description>
+    </item>
+    
+    <item>
+      <title>&#39;More evidence needed...&#39; Pessimism of a sociologist in the age of justice procrastination.</title>
+      <link>/posts/more-evidence-needed/</link>
+      <pubDate>Sat, 20 Jun 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/posts/more-evidence-needed/</guid>
+      <description>‘What is it you’re wanting me to reconcile myself to? I was born here almost sixty years ago. I’m not going to live another sixty years. You always told me it takes time. It’s taken my father’s time, my mother’s time. My uncle’s time. My brothers’ and my sisters’ time. My nieces’ and my nephews’ time. How much time do you want for your “progress?”’
+James Baldwin, The Price of a Ticket</description>
+    </item>
+    
+  </channel>
+</rss>

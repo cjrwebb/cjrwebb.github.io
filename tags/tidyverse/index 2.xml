@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>tidyverse on Calum Webb</title>
+    <link>/tags/tidyverse/</link>
+    <description>Recent content in tidyverse on Calum Webb</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-gb</language>
+    <copyright>© Copyright Calum Webb 2019 - 2020</copyright>
+    <lastBuildDate>Sat, 04 Jan 2020 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="/tags/tidyverse/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>scoutR - Visualising Dragon Ball Z Power Levels with the tidyverse &amp; plotly</title>
+      <link>/post/scoutr-dbz/</link>
+      <pubDate>Sat, 04 Jan 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/post/scoutr-dbz/</guid>
+      <description>{&#34;x&#34;:{&#34;visdat&#34;:{&#34;16eec6791e77b&#34;:[&#34;function () &#34;,&#34;plotlyVisDat&#34;]},&#34;cur_data&#34;:&#34;16eec6791e77b&#34;,&#34;attrs&#34;:{&#34;16eec6791e77b&#34;:{&#34;x&#34;:{},&#34;y&#34;:{},&#34;mode&#34;:&#34;markers+lines&#34;,&#34;text&#34;:{},&#34;marker&#34;:{&#34;size&#34;:10,&#34;opacity&#34;:1},&#34;line&#34;:{&#34;width&#34;:0.7},&#34;hovertemplate&#34;:&#34;Power Level: %{y} %{text}&#34;,&#34;color&#34;:{},&#34;colors&#34;:[&#34;#DC5232&#34;,&#34;#5D2E6B&#34;,&#34;#9DD732&#34;,&#34;#0F227B&#34;,&#34;#A33DC9&#34;,&#34;#5A4AC0&#34;,&#34;#F77B22&#34;,&#34;#3B63E4&#34;,&#34;#782316&#34;,&#34;#AE8C33&#34;,&#34;#CCD3EF&#34;,&#34;#B0E5E5&#34;,&#34;#13150A&#34;,&#34;#EC0100&#34;,&#34;#94C710&#34;,&#34;#3E8909&#34;,&#34;#994A46&#34;,&#34;#1D960A&#34;,&#34;#FAC92D&#34;,&#34;#EDC0BD&#34;,&#34;#F02411&#34;,&#34;#AB3C06&#34;,&#34;#6D4D95&#34;,&#34;#1B51AE&#34;,&#34;#6B2B77&#34;,&#34;#3C1A1A&#34;,&#34;#991F3B&#34;,&#34;#1CACA5&#34;],&#34;alpha_stroke&#34;:1,&#34;sizes&#34;:[10,100],&#34;spans&#34;:[1,20],&#34;type&#34;:&#34;scatter&#34;}},&#34;layout&#34;:{&#34;width&#34;:550,&#34;height&#34;:450,&#34;margin&#34;:{&#34;b&#34;:40,&#34;l&#34;:60,&#34;t&#34;:80,&#34;r&#34;:10},&#34;title&#34;:{&#34;text&#34;:&#34;Power Levels of Main Characters
+(Saiyan to Buu Sagas)&#34;,&#34;size&#34;:18},&#34;font&#34;:{&#34;family&#34;:&#34;SimHei, monospace&#34;},&#34;yaxis&#34;:{&#34;domain&#34;:[0,1],&#34;automargin&#34;:true,&#34;title&#34;:&#34;Power Level (log scale)&#34;,&#34;type&#34;:&#34;log&#34;,&#34;size&#34;:14},&#34;xaxis&#34;:{&#34;domain&#34;:[0,1],&#34;automargin&#34;:true,&#34;title&#34;:&#34;Chronological Order of Power Level Reading&#34;,&#34;size&#34;:14,&#34;rangemode&#34;:&#34;nonnegative&#34;},&#34;hovermode&#34;:&#34;closest&#34;,&#34;showlegend&#34;:true},&#34;source&#34;:&#34;A&#34;,&#34;config&#34;:{&#34;showSendToCloud&#34;:false},&#34;data&#34;:[{&#34;x&#34;:[183,185,223],&#34;y&#34;:[3000000000,2250000000,3000000000],&#34;mode&#34;:&#34;markers+lines&#34;,&#34;text&#34;:[&#34;Android 16
+Imperfect Cell Saga&#34;,&#34;Android 16 (weakened)
+Perfect Cell Saga&#34;,&#34;Android 16
+Cell Games Saga&#34;],&#34;marker&#34;:{&#34;color&#34;:&#34;rgba(148,199,16,1)&#34;,&#34;size&#34;:10,&#34;opacity&#34;:1,&#34;line&#34;:{&#34;color&#34;:&#34;rgba(148,199,16,1)&#34;}},&#34;line&#34;:{&#34;color&#34;:&#34;rgba(148,199,16,1)&#34;,&#34;width&#34;:0.7},&#34;hovertemplate&#34;:[&#34;Power Level: %{y} %{text}&#34;,&#34;Power Level: %{y} %{text}&#34;,&#34;Power Level: %{y} %{text}&#34;],&#34;type&#34;:&#34;scatter&#34;,&#34;name&#34;:&#34;Android 16&#34;,&#34;textfont&#34;:{&#34;color&#34;:&#34;rgba(148,199,16,1)&#34;},&#34;error_y&#34;:{&#34;color&#34;:&#34;rgba(148,199,16,1)&#34;},&#34;error_x&#34;:{&#34;color&#34;:&#34;rgba(148,199,16,1)&#34;},&#34;xaxis&#34;:&#34;x&#34;,&#34;yaxis&#34;:&#34;y&#34;,&#34;frame&#34;:null},{&#34;x&#34;:[148,173,253,359],&#34;y&#34;:[5000000000,5000000000,5000000000,7000000000],&#34;mode&#34;:&#34;markers+lines&#34;,&#34;text&#34;:[&#34;Future Android 17
+Trunks Saga&#34;,&#34;Android 17
+Android Saga&#34;,&#34;Future Android 17
+Cell Games Saga&#34;,&#34;Android 17
+Kid Buu Saga&#34;],&#34;marker&#34;:{&#34;color&#34;:&#34;rgba(247,123,34,1)&#34;,&#34;size&#34;:10,&#34;opacity&#34;:1,&#34;line&#34;:{&#34;color&#34;:&#34;rgba(247,123,34,1)&#34;}},&#34;line&#34;:{&#34;color&#34;:&#34;rgba(247,123,34,1)&#34;,&#34;width&#34;:0.7},&#34;hovertemplate&#34;:[&#34;Power Level: %{y} %{text}&#34;</description>
+    </item>
+    
+    <item>
+      <title>scoutR - Visualising Dragon Ball Z Power Levels with the tidyverse &amp; plotly</title>
+      <link>/posts/scoutr-dbz/</link>
+      <pubDate>Sat, 04 Jan 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/posts/scoutr-dbz/</guid>
+      <description>{&#34;x&#34;:{&#34;visdat&#34;:{&#34;16f162a5ba9ab&#34;:[&#34;function () &#34;,&#34;plotlyVisDat&#34;]},&#34;cur_data&#34;:&#34;16f162a5ba9ab&#34;,&#34;attrs&#34;:{&#34;16f162a5ba9ab&#34;:{&#34;x&#34;:{},&#34;y&#34;:{},&#34;mode&#34;:&#34;markers+lines&#34;,&#34;text&#34;:{},&#34;marker&#34;:{&#34;size&#34;:10,&#34;opacity&#34;:1},&#34;line&#34;:{&#34;width&#34;:0.7},&#34;hovertemplate&#34;:&#34;Power Level: %{y} %{text}&#34;,&#34;color&#34;:{},&#34;colors&#34;:[&#34;#DC5232&#34;,&#34;#5D2E6B&#34;,&#34;#9DD732&#34;,&#34;#0F227B&#34;,&#34;#A33DC9&#34;,&#34;#5A4AC0&#34;,&#34;#F77B22&#34;,&#34;#3B63E4&#34;,&#34;#782316&#34;,&#34;#AE8C33&#34;,&#34;#CCD3EF&#34;,&#34;#B0E5E5&#34;,&#34;#13150A&#34;,&#34;#EC0100&#34;,&#34;#94C710&#34;,&#34;#3E8909&#34;,&#34;#994A46&#34;,&#34;#1D960A&#34;,&#34;#FAC92D&#34;,&#34;#EDC0BD&#34;,&#34;#F02411&#34;,&#34;#AB3C06&#34;,&#34;#6D4D95&#34;,&#34;#1B51AE&#34;,&#34;#6B2B77&#34;,&#34;#3C1A1A&#34;,&#34;#991F3B&#34;,&#34;#1CACA5&#34;],&#34;alpha_stroke&#34;:1,&#34;sizes&#34;:[10,100],&#34;spans&#34;:[1,20],&#34;type&#34;:&#34;scatter&#34;}},&#34;layout&#34;:{&#34;width&#34;:550,&#34;height&#34;:450,&#34;margin&#34;:{&#34;b&#34;:40,&#34;l&#34;:60,&#34;t&#34;:80,&#34;r&#34;:10},&#34;title&#34;:{&#34;text&#34;:&#34;Power Levels of Main Characters
+(Saiyan to Buu Sagas)&#34;,&#34;size&#34;:18},&#34;font&#34;:{&#34;family&#34;:&#34;SimHei, monospace&#34;},&#34;yaxis&#34;:{&#34;domain&#34;:[0,1],&#34;automargin&#34;:true,&#34;title&#34;:&#34;Power Level (log scale)&#34;,&#34;type&#34;:&#34;log&#34;,&#34;size&#34;:14},&#34;xaxis&#34;:{&#34;domain&#34;:[0,1],&#34;automargin&#34;:true,&#34;title&#34;:&#34;Chronological Order of Power Level Reading&#34;,&#34;size&#34;:14,&#34;rangemode&#34;:&#34;nonnegative&#34;},&#34;hovermode&#34;:&#34;closest&#34;,&#34;showlegend&#34;:true},&#34;source&#34;:&#34;A&#34;,&#34;config&#34;:{&#34;showSendToCloud&#34;:false},&#34;data&#34;:[{&#34;x&#34;:[183,185,223],&#34;y&#34;:[3000000000,2250000000,3000000000],&#34;mode&#34;:&#34;markers+lines&#34;,&#34;text&#34;:[&#34;Android 16
+Imperfect Cell Saga&#34;,&#34;Android 16 (weakened)
+Perfect Cell Saga&#34;,&#34;Android 16
+Cell Games Saga&#34;],&#34;marker&#34;:{&#34;color&#34;:&#34;rgba(148,199,16,1)&#34;,&#34;size&#34;:10,&#34;opacity&#34;:1,&#34;line&#34;:{&#34;color&#34;:&#34;rgba(148,199,16,1)&#34;}},&#34;line&#34;:{&#34;color&#34;:&#34;rgba(148,199,16,1)&#34;,&#34;width&#34;:0.7},&#34;hovertemplate&#34;:[&#34;Power Level: %{y} %{text}&#34;,&#34;Power Level: %{y} %{text}&#34;,&#34;Power Level: %{y} %{text}&#34;],&#34;type&#34;:&#34;scatter&#34;,&#34;name&#34;:&#34;Android 16&#34;,&#34;textfont&#34;:{&#34;color&#34;:&#34;rgba(148,199,16,1)&#34;},&#34;error_y&#34;:{&#34;color&#34;:&#34;rgba(148,199,16,1)&#34;},&#34;error_x&#34;:{&#34;color&#34;:&#34;rgba(148,199,16,1)&#34;},&#34;xaxis&#34;:&#34;x&#34;,&#34;yaxis&#34;:&#34;y&#34;,&#34;frame&#34;:null},{&#34;x&#34;:[148,173,253,359],&#34;y&#34;:[5000000000,5000000000,5000000000,7000000000],&#34;mode&#34;:&#34;markers+lines&#34;,&#34;text&#34;:[&#34;Future Android 17
+Trunks Saga&#34;,&#34;Android 17
+Android Saga&#34;,&#34;Future Android 17
+Cell Games Saga&#34;,&#34;Android 17
+Kid Buu Saga&#34;],&#34;marker&#34;:{&#34;color&#34;:&#34;rgba(247,123,34,1)&#34;,&#34;size&#34;:10,&#34;opacity&#34;:1,&#34;line&#34;:{&#34;color&#34;:&#34;rgba(247,123,34,1)&#34;}},&#34;line&#34;:{&#34;color&#34;:&#34;rgba(247,123,34,1)&#34;,&#34;width&#34;:0.7},&#34;hovertemplate&#34;:[&#34;Power Level: %{y} %{text}&#34;</description>
+    </item>
+    
+  </channel>
+</rss>
