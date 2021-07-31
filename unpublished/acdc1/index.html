@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge"><title>Animal Crossing Data Camp Day 1: Reading in and exploring the data - Calum Webb</title><meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta property="og:title" content="Animal Crossing Data Camp Day 1: Reading in and exploring the data" />
+<meta property="og:description" content="Welcome to day one of the Animal Crossing Data Camp, a daily series of data science related posts using data about the Animal Crossing game series. In this post, I&#39;ll be demonstrating how to read in and explore features of the data." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/unpublished/acdc1/" />
+<meta property="article:published_time" content="2020-04-20T00:00:00+00:00" />
+<meta property="article:modified_time" content="2020-04-20T00:00:00+00:00" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Animal Crossing Data Camp Day 1: Reading in and exploring the data"/>
+<meta name="twitter:description" content="Welcome to day one of the Animal Crossing Data Camp, a daily series of data science related posts using data about the Animal Crossing game series. In this post, I&#39;ll be demonstrating how to read in and explore features of the data."/>
+<meta name="twitter:site" content="@cjrwebb">
+<meta name="twitter:creator" content="@cjrwebb">
+
+<meta name="twitter:description" content="Everything related to Animal Crossing belongs to its original owners. These posts are purely for educational and entertainment purposes for fans of the series.
+Welcome to the first in a series of posts exploring some beginner level data science in R using data from the Animal Crossing series. This series is intended to help people new to data analysis and statistics cover some easy to use ways of exploring and analysing data, through the medium of cute animals." />
+<meta name="twitter:title" content="Animal Crossing Data Camp Day 1: Reading in and exploring the data" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:image" content="" /> 
+	<link href="https://fonts.googleapis.com/css?family=Ubuntu:300,400,300italic,400italic|Raleway:200,300" rel="stylesheet">
+
+	<link rel="stylesheet" type="text/css" media="screen" href="../../css/normalize.css" />
+	<link rel="stylesheet" type="text/css" media="screen" href="../../css/main.css" />
+	<link rel="stylesheet" type="text/css" href="../../css/custom.css" />
+	
+
+	<script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+	<script src="../../js/main.js"></script>
+	<script src="../../js/custom.js"></script>
+	<script src="../../js/custom1.js"></script>
+</head>
+
+<body>
+	<div class="container wrapper post">
+		<meta name="twitter:site" content="@cjrwebb">
+<meta name="twitter:creator" content="@cjrwebb">
+
+<meta name="twitter:description" content="Everything related to Animal Crossing belongs to its original owners. These posts are purely for educational and entertainment purposes for fans of the series.
+Welcome to the first in a series of posts exploring some beginner level data science in R using data from the Animal Crossing series. This series is intended to help people new to data analysis and statistics cover some easy to use ways of exploring and analysing data, through the medium of cute animals." />
+<meta name="twitter:title" content="Animal Crossing Data Camp Day 1: Reading in and exploring the data" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:image" content="" /> 
+
+<div class="header">
+	<h1 class="site-title"><a href="../../">Calum Webb</a></h1>
+	<div class="site-description"><h2>Sociologist.</h2><nav class="nav social">
+			<ul class="flat"><a href="https://twitter.com/cjrwebb" title="Twitter"><i data-feather="twitter"></i></a><a href="../../index.xml" title="RSS"><i data-feather="rss"></i></a><a href="mailto:c.j.webb@sheffield.ac.uk" title="Email"><i data-feather="mail"></i></a><a href="https://github.com/cjrwebb" title="Github"><i data-feather="github"></i></a></ul>
+		</nav>
+	</div>
+	
+	<link rel="stylesheet" href="../../css/github-gist.css" rel="stylesheet" id="theme-stylesheet">
+<script src="../../js/highlight.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+	<nav class="nav">
+		<ul class="flat">
+			
+			<li>
+				<a href="../../">Home</a>
+			</li>
+			
+			<li>
+				<a href="../../posts">All posts</a>
+			</li>
+			
+			<li>
+				<a href="../../about">About</a>
+			</li>
+			
+			<li>
+				<a href="../../cv-ac-cw.pdf">Resume/CV</a>
+			</li>
+			
+			<li>
+				<a href="../../tags">Tags</a>
+			</li>
+			
+		</ul>
+	</nav>
+	
+</div>
+
+
+
+		<div class="post-header">
+			<h1 class="title">Animal Crossing Data Camp Day 1: Reading in and exploring the data</h1>
+			<div class="meta">Posted at &mdash; Apr 20, 2020 <span class="draft-label">DRAFT</span> </div>
+		</div>
+
+		<div class="markdown">
+			
+
+
+<p><img src="../../posts/acdc1/acdatacamp-logo.png" /></p>
+<p><em>Everything related to Animal Crossing belongs to its original owners. These posts are purely for educational and entertainment purposes for fans of the series.</em></p>
+<p>Welcome to the first in a series of posts exploring some beginner level data science in R using data from the Animal Crossing series. This series is intended to help people new to data analysis and statistics cover some easy to use ways of exploring and analysing data, through the medium of cute animals.</p>
+<p>However, this series is not intended for <em>complete beginners</em>. While many things will be very basic, I’m going to assume you know some of the fundamentals and have been learning <code>R</code> from some other, more general, source. For example, I’m going to assume you have successfully installed <code>R</code> and <code>Rstudio</code> on your computer. I’m also going to assume you can do or know of the following:</p>
+<ul>
+<li>Create a new R Project</li>
+<li>Find the directory for your new R Project</li>
+<li>Extract the contents of a .zip file</li>
+<li>Understand the basic formatting of an R script, for example:
+<ul>
+<li>Comments and commented out code has a preceding <code>#</code></li>
+<li>Creating environment objects using <code>&lt;-</code> or <code>=</code></li>
+</ul></li>
+</ul>
+<p>There are many fantastic resources available for learning these basics. I would personally recommend <a href="https://r4ds.had.co.nz">Garrett Grolemund and Hadley Wickham’s R for Data Science</a>.</p>
+<p>With that said, let’s jump in…</p>
+<div id="reading-in-the-animal-crossing-data" class="section level3">
+<h3>Reading in the Animal Crossing data</h3>
+<p>If you want to follow along, start by creating a new <code>R</code> project and <code>R</code> script file for the Animal Crossing data camp in <code>Rstudio</code>.</p>
+</div>
+
+		</div>
+
+		<div class="post-tags">
+			
+				
+			
+		</div><div id="disqus_thread"></div>
+<script type="text/javascript">
+	(function () {
+		
+		
+		if (window.location.hostname == "localhost")
+			return;
+
+		var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+		var disqus_shortname = 'calumwebb-uk';
+		dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+		(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+	})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by
+		Disqus.</a></noscript>
+<a href="http://disqus.com/" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+	<div class="footer wrapper">
+	<nav class="nav">
+		<div> © Copyright Calum Webb 2019 - 2020 |  <a href="https://github.com/vividvilla/ezhil">Ezhil theme</a> | Built with <a href="https://gohugo.io">Hugo</a></div>
+	</nav>
+</div>
+
+<script>feather.replace()</script>
+</body>
+</html>

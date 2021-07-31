@@ -6,31 +6,11 @@
     <description>Recent content in spatial on Calum Webb</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-gb</language>
-    <copyright>© Copyright Calum Webb 2019 - 2020</copyright>
-    <lastBuildDate>Sat, 18 Jan 2020 00:00:00 +0000</lastBuildDate>
+    <copyright>© Copyright Calum Webb 2019 - 2021</copyright>
+    <lastBuildDate>Sat, 11 Jan 2020 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/tags/spatial/index.xml" rel="self" type="application/rss+xml" />
     
-    
-    <item>
-      <title>Preprocessing quantiles and colourscales for mapping local data efficiently with `plotly` and `mapbox`</title>
-      <link>/posts/mapping-local-data-efficiently-with-plotly-and-mapbox/</link>
-      <pubDate>Sat, 18 Jan 2020 00:00:00 +0000</pubDate>
-      
-      <guid>/posts/mapping-local-data-efficiently-with-plotly-and-mapbox/</guid>
-      <description>{&#34;x&#34;:{&#34;visdat&#34;:{&#34;16f425b6053b8&#34;:[&#34;function () &#34;,&#34;plotlyVisDat&#34;],&#34;16f42111883e6&#34;:[&#34;function () &#34;,&#34;data&#34;]},&#34;cur_data&#34;:&#34;16f42111883e6&#34;,&#34;attrs&#34;:{&#34;16f42111883e6&#34;:{&#34;text&#34;:{},&#34;hovertemplate&#34;:&#34;%{text}&#34;,&#34;showlegend&#34;:false,&#34;color&#34;:{},&#34;colors&#34;:[&#34;#9E0142&#34;,&#34;#BA2148&#34;,&#34;#D6404E&#34;,&#34;#E65948&#34;,&#34;#F47346&#34;,&#34;#F99655&#34;,&#34;#FDB567&#34;,&#34;#FDD07D&#34;,&#34;#FEE695&#34;,&#34;#FEF6B1&#34;,&#34;#F8FCB4&#34;,&#34;#EBF7A0&#34;,&#34;#D3ED9B&#34;,&#34;#B4E0A2&#34;,&#34;#91D3A4&#34;,&#34;#6DC4A4&#34;,&#34;#50A9AF&#34;,&#34;#348BBB&#34;,&#34;#466DB0&#34;,&#34;#5E4FA2&#34;],&#34;alpha&#34;:0.6,&#34;alpha_stroke&#34;:0.1,&#34;sizes&#34;:[10,100],&#34;spans&#34;:[1,20],&#34;x&#34;:{},&#34;y&#34;:{},&#34;_bbox&#34;:[-1.80147070870193,53.3047216742583,-1.3247265687219,53.5029197750173],&#34;mode&#34;:&#34;lines&#34;,&#34;fill&#34;:&#34;toself&#34;,&#34;inherit&#34;:true}},&#34;layout&#34;:{&#34;margin&#34;:{&#34;b&#34;:40,&#34;l&#34;:60,&#34;t&#34;:25,&#34;r&#34;:10},&#34;mapType&#34;:&#34;mapbox&#34;,&#34;mapbox&#34;:{&#34;domain&#34;:{&#34;x&#34;:[0,1],&#34;y&#34;:[0,1]},&#34;zoom&#34;:8,&#34;style&#34;:&#34;mapbox://styles/drcalumwebb/ck55r34nt00yh1dol4wfi3xi4&#34;,&#34;accesstoken&#34;:&#34;pk.eyJ1IjoiZHJjYWx1bXdlYmIiLCJhIjoiY2s1NXF4aDl3MGJ5bTNvcGM3N3FxM202ZiJ9.MDz2xreMNIPGfh9LYgQ3uQ&#34;,&#34;_fitBounds&#34;:{&#34;bounds&#34;:[-1.80623815010173,53.3027396932507,-1.3199591273221,53.5049017560249],&#34;options&#34;:{&#34;padding&#34;:10,&#34;linear&#34;:false,&#34;offset&#34;:[0,0]}},&#34;center&#34;:{&#34;lat&#34;:53.4038207246378,&#34;lon&#34;:-1.56309863871191}},&#34;hovermode&#34;:&#34;closest&#34;,&#34;showlegend&#34;:false},&#34;source&#34;:&#34;A&#34;,&#34;config&#34;:{&#34;showSendToCloud&#34;:false,&#34;mapboxAccessToken&#34;:&#34;pk.eyJ1IjoiZHJjYWx1bXdlYmIiLCJhIjoiY2s1NXF4aDl3MGJ5bTNvcGM3N3FxM202ZiJ9.MDz2xreMNIPGfh9LYgQ3uQ&#34;},&#34;data&#34;:[{&#34;fillcolor&#34;:&#34;rgba(158,1,66,0.6)&#34;,&#34;text&#34;:[&#34;AccssbltGP: 53
-High Green &amp; Burncross&#34;,&#34;AccssbltGP: 53
-High Green &amp; Burncross&#34;,&#34;AccssbltGP: 53
-High Green &amp; Burncross&#34;,&#34;AccssbltGP: 53
-High Green &amp; Burncross&#34;,&#34;AccssbltGP: 53
-High Green &amp; Burncross&#34;,&#34;AccssbltGP: 53
-High Green &amp; Burncross&#34;,&#34;AccssbltGP: 53
-High Green &amp; Burncross&#34;,&#34;AccssbltGP: 53
-High Green &amp; Burncross&#34;,&#34;AccssbltGP: 53
-High Green &amp; Burncross&#34;,null,&#34;AccssbltGP: 52.88
-High Green &amp; Burncross&#34;,&#34;AccssbltGP: 52.88
-High Green &amp; Burncross&#34;,&#34;AccssbltGP: 52.88</description>
-    </item>
     
     <item>
       <title>Intersections of Inequality using MOG: the Mapping Overlaps Gadget</title>

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Unpublisheds on Calum Webb</title>
+    <link>/unpublished/</link>
+    <description>Recent content in Unpublisheds on Calum Webb</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-gb</language>
+    <copyright>© Copyright Calum Webb 2019 - 2020</copyright>
+    <lastBuildDate>Mon, 20 Apr 2020 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="/unpublished/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Animal Crossing Data Camp Day 1: Reading in and exploring the data</title>
+      <link>/unpublished/acdc1/</link>
+      <pubDate>Mon, 20 Apr 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/unpublished/acdc1/</guid>
+      <description>Everything related to Animal Crossing belongs to its original owners. These posts are purely for educational and entertainment purposes for fans of the series.
+Welcome to the first in a series of posts exploring some beginner level data science in R using data from the Animal Crossing series. This series is intended to help people new to data analysis and statistics cover some easy to use ways of exploring and analysing data, through the medium of cute animals.</description>
+    </item>
+    
+  </channel>
+</rss>

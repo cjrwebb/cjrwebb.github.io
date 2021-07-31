@@ -6,7 +6,7 @@
     <description>Recent content in Tags on Calum Webb</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-gb</language>
-    <copyright>© Copyright Calum Webb 2019 - 2020</copyright>
+    <copyright>© Copyright Calum Webb 2019 - 2021</copyright>
     <lastBuildDate>Thu, 20 Aug 2020 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/tags/index.xml" rel="self" type="application/rss+xml" />
@@ -103,9 +103,18 @@
     </item>
     
     <item>
+      <title>maps</title>
+      <link>/tags/maps/</link>
+      <pubDate>Sat, 11 Jan 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/maps/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>plotly</title>
       <link>/tags/plotly/</link>
-      <pubDate>Sat, 18 Jan 2020 00:00:00 +0000</pubDate>
+      <pubDate>Sat, 11 Jan 2020 00:00:00 +0000</pubDate>
       
       <guid>/tags/plotly/</guid>
       <description></description>
@@ -114,18 +123,9 @@
     <item>
       <title>spatial</title>
       <link>/tags/spatial/</link>
-      <pubDate>Sat, 18 Jan 2020 00:00:00 +0000</pubDate>
-      
-      <guid>/tags/spatial/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>maps</title>
-      <link>/tags/maps/</link>
       <pubDate>Sat, 11 Jan 2020 00:00:00 +0000</pubDate>
       
-      <guid>/tags/maps/</guid>
+      <guid>/tags/spatial/</guid>
       <description></description>
     </item>
     
