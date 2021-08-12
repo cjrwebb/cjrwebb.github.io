@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge"><title>Tidy Tuesday 21/01/2020: Spotifyr. Hierarchical clusters of popular songs by audio features - Calum Webb</title><meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta property="og:title" content="Tidy Tuesday 21/01/2020: Spotifyr. Hierarchical clusters of popular songs by audio features" />
+<meta property="og:description" content="Using audio features to create &#34;perfect pairings&#34; of popular songs? Pretty dendrograms using ggdendro." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/posts/spotifyr/" />
+<meta property="article:published_time" content="2020-01-22T00:00:00+00:00" />
+<meta property="article:modified_time" content="2020-01-22T00:00:00+00:00" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Tidy Tuesday 21/01/2020: Spotifyr. Hierarchical clusters of popular songs by audio features"/>
+<meta name="twitter:description" content="Using audio features to create &#34;perfect pairings&#34; of popular songs? Pretty dendrograms using ggdendro."/>
+<meta name="twitter:site" content="@cjrwebb">
+<meta name="twitter:creator" content="@cjrwebb">
+
+<meta name="twitter:description" content="Playlist: https://open.spotify.com/playlist/3kPYr4522CKURLg4ePkuz1?si=3Yx-APApQL2s4KsvFFskAQ
+Playlist: https://open.spotify.com/playlist/18qGN481uKhPCbBy0UHz1i?si=l5jqQlb0R5WD8HYv9UVIlA
+Playlist: https://open.spotify.com/playlist/4ChD4YncnVzSK7E8Z8wn3W?si=JCJUSe55TNGREQ1q0QF9CQ
+Playlist: https://open.spotify.com/playlist/2kdfe1C6wSRkNxhrEyIVOP?si=QRJbJofnRUyvib-_U4GSvA
+Playlist: https://open.spotify.com/playlist/3FnznOoaA2lnDr7wIT0j5Q?si=lgcYDNeDSau2nnP0_ID92w
+Playlist: https://open.spotify.com/playlist/7nwVFzZ67qgu1VddrbpQ5K?si=cWn4yU4pRj-k8H37icWRog
+Playlists created using spotipy.
+This was my attempt at creating an appealing (although maybe not super informative) visualisation of popular songs from the Spotify data in this week’s Tidy Tuesday.
+If I was using my statistical routes, I would just describe this as a dendrogram with polar coordinates showing the results from a hierarchical cluster analysis based on several audio features: danceability, energy, loudness, speechiness, acousticness, instrumentalness, liveness, valence, and tempo." />
+<meta name="twitter:title" content="Tidy Tuesday 21/01/2020: Spotifyr. Hierarchical clusters of popular songs by audio features" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:image" content="" /> 
+	<link href="https://fonts.googleapis.com/css?family=Ubuntu:300,400,300italic,400italic|Raleway:200,300" rel="stylesheet">
+
+	<link rel="stylesheet" type="text/css" media="screen" href="../../css/normalize.css" />
+	<link rel="stylesheet" type="text/css" media="screen" href="../../css/main.css" />
+	<link rel="stylesheet" type="text/css" href="../../css/custom.css" />
+	
+
+	<script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+	<script src="../../js/main.js"></script>
+	<script src="../../js/custom.js"></script>
+	<script src="../../js/custom1.js"></script>
+</head>
+
+<body>
+	<div class="container wrapper post">
+		<meta name="twitter:site" content="@cjrwebb">
+<meta name="twitter:creator" content="@cjrwebb">
+
+<meta name="twitter:description" content="Playlist: https://open.spotify.com/playlist/3kPYr4522CKURLg4ePkuz1?si=3Yx-APApQL2s4KsvFFskAQ
+Playlist: https://open.spotify.com/playlist/18qGN481uKhPCbBy0UHz1i?si=l5jqQlb0R5WD8HYv9UVIlA
+Playlist: https://open.spotify.com/playlist/4ChD4YncnVzSK7E8Z8wn3W?si=JCJUSe55TNGREQ1q0QF9CQ
+Playlist: https://open.spotify.com/playlist/2kdfe1C6wSRkNxhrEyIVOP?si=QRJbJofnRUyvib-_U4GSvA
+Playlist: https://open.spotify.com/playlist/3FnznOoaA2lnDr7wIT0j5Q?si=lgcYDNeDSau2nnP0_ID92w
+Playlist: https://open.spotify.com/playlist/7nwVFzZ67qgu1VddrbpQ5K?si=cWn4yU4pRj-k8H37icWRog
+Playlists created using spotipy.
+This was my attempt at creating an appealing (although maybe not super informative) visualisation of popular songs from the Spotify data in this week’s Tidy Tuesday.
+If I was using my statistical routes, I would just describe this as a dendrogram with polar coordinates showing the results from a hierarchical cluster analysis based on several audio features: danceability, energy, loudness, speechiness, acousticness, instrumentalness, liveness, valence, and tempo." />
+<meta name="twitter:title" content="Tidy Tuesday 21/01/2020: Spotifyr. Hierarchical clusters of popular songs by audio features" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:image" content="" /> 
+
+<div class="header">
+	<h1 class="site-title"><a href="../../">Calum Webb</a></h1>
+	<div class="site-description"><h2>Sociologist.</h2><nav class="nav social">
+			<ul class="flat"><a href="https://twitter.com/cjrwebb" title="Twitter"><i data-feather="twitter"></i></a><a href="../../index.xml" title="RSS"><i data-feather="rss"></i></a><a href="mailto:c.j.webb@sheffield.ac.uk" title="Email"><i data-feather="mail"></i></a><a href="https://github.com/cjrwebb" title="Github"><i data-feather="github"></i></a></ul>
+		</nav>
+	</div>
+	
+	<link rel="stylesheet" href="../../css/github-gist.css" rel="stylesheet" id="theme-stylesheet">
+<script src="../../js/highlight.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+	<nav class="nav">
+		<ul class="flat">
+			
+			<li>
+				<a href="../../">Home</a>
+			</li>
+			
+			<li>
+				<a href="../../posts">All posts</a>
+			</li>
+			
+			<li>
+				<a href="../../about">About</a>
+			</li>
+			
+			<li>
+				<a href="../../cv-ac-cw.pdf">Resume/CV</a>
+			</li>
+			
+			<li>
+				<a href="../../tags">Tags</a>
+			</li>
+			
+		</ul>
+	</nav>
+	
+</div>
+
+
+
+		<div class="post-header">
+			<h1 class="title">Tidy Tuesday 21/01/2020: Spotifyr. Hierarchical clusters of popular songs by audio features</h1>
+			<div class="meta">Posted at &mdash; Jan 22, 2020</div>
+		</div>
+
+		<div class="markdown">
+			
+
+
+<p><img src="../../posts/2020-01-22-tidy-tuesday-21-01-2020-spotifyr-hierarchical-clusters-of-popular-songs-by-audio-features_files/edm_poster.png" /></p>
+<p>Playlist: <a href="https://open.spotify.com/playlist/3kPYr4522CKURLg4ePkuz1?si=3Yx-APApQL2s4KsvFFskAQ">https://open.spotify.com/playlist/3kPYr4522CKURLg4ePkuz1?si=3Yx-APApQL2s4KsvFFskAQ</a></p>
+<hr />
+<p><img src="../../posts/2020-01-22-tidy-tuesday-21-01-2020-spotifyr-hierarchical-clusters-of-popular-songs-by-audio-features_files/rock_poster.png" /></p>
+<p>Playlist: <a href="https://open.spotify.com/playlist/18qGN481uKhPCbBy0UHz1i?si=l5jqQlb0R5WD8HYv9UVIlA">https://open.spotify.com/playlist/18qGN481uKhPCbBy0UHz1i?si=l5jqQlb0R5WD8HYv9UVIlA</a></p>
+<hr />
+<p><img src="../../posts/2020-01-22-tidy-tuesday-21-01-2020-spotifyr-hierarchical-clusters-of-popular-songs-by-audio-features_files/pop_poster.png" /></p>
+<p>Playlist: <a href="https://open.spotify.com/playlist/4ChD4YncnVzSK7E8Z8wn3W?si=JCJUSe55TNGREQ1q0QF9CQ">https://open.spotify.com/playlist/4ChD4YncnVzSK7E8Z8wn3W?si=JCJUSe55TNGREQ1q0QF9CQ</a></p>
+<hr />
+<p><img src="../../posts/2020-01-22-tidy-tuesday-21-01-2020-spotifyr-hierarchical-clusters-of-popular-songs-by-audio-features_files/rap_poster.png" /></p>
+<p>Playlist: <a href="https://open.spotify.com/playlist/2kdfe1C6wSRkNxhrEyIVOP?si=QRJbJofnRUyvib-_U4GSvA">https://open.spotify.com/playlist/2kdfe1C6wSRkNxhrEyIVOP?si=QRJbJofnRUyvib-_U4GSvA</a></p>
+<hr />
+<p><img src="../../posts/2020-01-22-tidy-tuesday-21-01-2020-spotifyr-hierarchical-clusters-of-popular-songs-by-audio-features_files/rnb_poster.png" /></p>
+<p>Playlist: <a href="https://open.spotify.com/playlist/3FnznOoaA2lnDr7wIT0j5Q?si=lgcYDNeDSau2nnP0_ID92w">https://open.spotify.com/playlist/3FnznOoaA2lnDr7wIT0j5Q?si=lgcYDNeDSau2nnP0_ID92w</a></p>
+<hr />
+<p><img src="../../posts/2020-01-22-tidy-tuesday-21-01-2020-spotifyr-hierarchical-clusters-of-popular-songs-by-audio-features_files/latin_poster.png" /></p>
+<p>Playlist: <a href="https://open.spotify.com/playlist/7nwVFzZ67qgu1VddrbpQ5K?si=cWn4yU4pRj-k8H37icWRog">https://open.spotify.com/playlist/7nwVFzZ67qgu1VddrbpQ5K?si=cWn4yU4pRj-k8H37icWRog</a></p>
+<hr />
+<p><em>Playlists created using <code>spotipy</code></em>.</p>
+<p>This was my attempt at creating an appealing (although maybe not super informative) visualisation of popular songs from the <a href="https://github.com/rfordatascience/tidytuesday/blob/master/data/2020/2020-01-21/readme.md">Spotify data in this week’s Tidy Tuesday</a>.</p>
+<p>If I was using my statistical routes, I would just describe this as a dendrogram with polar coordinates showing the results from a hierarchical cluster analysis based on several audio features: danceability, energy, loudness, speechiness, acousticness, instrumentalness, liveness, valence, and tempo. The descriptions of each can be found in the link above.</p>
+<p>If I was trying to market myself and the visualisation better I would say something incorrect but eyecatching like: Using AI to Choose Perfect Pairings of Songs.</p>
+<div id="describing-the-visualisation" class="section level1">
+<h1>Describing the visualisation</h1>
+<p>The visualisation above is made of two parts: a polar coordinates scatterplot showing the relative high and low features of each song in terms of its tempo, valence, acousticness, speechiness, loudness, energy, and danceability (from the outermost to the innermost circle). That means that, for example, songs with large diamonds on the outermost circle have the highest tempos, songs with small or no diamonds have the lowest. Songs with larger diamonds in the next circle inwards are relatively happier or cheerful. And so on.</p>
+<p>The second part of the visualisation is the ‘tree branches’ that go from the outside in. At the lowest level, each one of these branches (the twigs) is linked to only this song. The two songs with the most similar audio features are then linked together in the next branch up, and then these pairs are linked to the next song or pair of songs. This continues until all of the songs are linked.</p>
+<p>This type of graph is called a dendrogram, and <a href="https://www.instituteofcaninebiology.org/how-to-read-a-dendrogram.html">we usually see them in evolutionary biology</a>. For example, below is a dendrogram from the Institute of Canine Biology showing the similarities between different dog breeds.</p>
+<p><img src="https://www.instituteofcaninebiology.org/uploads/1/9/6/9/19691109/2336926.png?797" /></p>
+</div>
+<div id="code-for-creating-data-visualisation" class="section level1">
+<h1>Code for creating data visualisation</h1>
+<p>Rather than breaking down each part of the code below I’m just going to outline the reasons behind each part:</p>
+<ol style="list-style-type: decimal">
+<li><p>First I read in the data and remove the duplicates using a combination of track name and artist. Then I filter out the genre that I want to create the visualisation for. The real upper limit for a plot like this is around 200 data points, especially when song names are long. Lastly I create a new variable that takes the track year from the album release date (it extracts the first four characters of the string and makes the result a numeric type column)</p></li>
+<li><p>Next, I found from playing around that the popularity skewed way too heavily towards more recent releases. To try and remedy this a little I used a linear model with release year included as a set of dummy predictors, with 2019 as the reference year. I use <code>broom</code> to tidy up the results of this model and then get the track years back from the <code>term</code> column to use for a join later on. I then subtract those coefficients to rebalance the popularity by adjusting for the average drop in popularity in years past. I find this gives a much better view of “most popular, timeless” songs that makes be feel less old. Finally, I rank the tracks and keep only the top 200 - I accept any of the ties as well so it’s sometimes more or less than 200.</p></li>
+<li><p>Next we create a data frame that can be used to calculate a distance matrix, calculate said matrix, and run a hierarchical cluster analysis. We then extract the clusters and get them in a format that can be handled by ggplot using the amazing <code>ggdenro</code> package.</p></li>
+<li><p>Next there is a bunch of fiddly stuff to get the angles on the text labels correct and to specify a nice neon colour palette for the feature plotting. I also need to set constants to put the feature rings in the right place on the plot (which required going back to the axis scale a few times).</p></li>
+<li><p>Last fiddly things are to set quantiles for each of the audio feature variables and add an empty row and point to stop the overlap that seems to often happen at the start and end of the plot (both at 12’o clock). This makes the variation more visible (you’ll see I also experimented with just scaling the variable, but the differences are too obscured at such a small size).</p></li>
+<li><p>Finally we can plot the data. Note the important polar coordinates and reverse y scale arguments. Also note that I’ve set a very small limit for the amount that size is allowed to fluctuate (for the audio feature rings). The largest feature data points still need to be quite small to look nice and be informative.</p></li>
+</ol>
+<p>The full code for the EDM visualisation is below: you can change what genre is visualised by just changing the filter conditions at the start of the code chunk.</p>
+<pre class="r"><code># Script v2 extended and with year of release weighting
+library(tidyverse)
+library(ggdendro)
+library(extrafont)
+library(broom)
+library(mltools)
+
+# data
+spotify_songs &lt;- readr::read_csv(&#39;https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2020/2020-01-21/spotify_songs.csv&#39;)
+unique(spotify_songs$playlist_genre)</code></pre>
+<pre><code>## [1] &quot;pop&quot;   &quot;rap&quot;   &quot;rock&quot;  &quot;latin&quot; &quot;r&amp;b&quot;   &quot;edm&quot;</code></pre>
+<pre class="r"><code>spotify_songs</code></pre>
+<pre><code>## # A tibble: 32,833 x 23
+##    track_id track_name track_artist track_popularity track_album_id
+##    &lt;chr&gt;    &lt;chr&gt;      &lt;chr&gt;                   &lt;dbl&gt; &lt;chr&gt;         
+##  1 6f807x0… I Don&#39;t C… Ed Sheeran                 66 2oCs0DGTsRO98…
+##  2 0r7CVbZ… Memories … Maroon 5                   67 63rPSO264uRjW…
+##  3 1z1Hg7V… All the T… Zara Larsson               70 1HoSmj2eLcsrR…
+##  4 75Fpbth… Call You … The Chainsm…               60 1nqYsOef1yKKu…
+##  5 1e8PAfc… Someone Y… Lewis Capal…               69 7m7vv9wlQ4i0L…
+##  6 7fvUMiy… Beautiful… Ed Sheeran                 67 2yiy9cd2QktrN…
+##  7 2OAylPU… Never Rea… Katy Perry                 62 7INHYSeusaFly…
+##  8 6b1RNvA… Post Malo… Sam Feldt                  69 6703SRPsLkS4b…
+##  9 7bF6tCO… Tough Lov… Avicii                     68 7CvAfGvq4RlIw…
+## 10 1IXGILk… If I Can&#39;… Shawn Mendes               67 4QxzbfSsVryEQ…
+## # … with 32,823 more rows, and 18 more variables: track_album_name &lt;chr&gt;,
+## #   track_album_release_date &lt;chr&gt;, playlist_name &lt;chr&gt;, playlist_id &lt;chr&gt;,
+## #   playlist_genre &lt;chr&gt;, playlist_subgenre &lt;chr&gt;, danceability &lt;dbl&gt;,
+## #   energy &lt;dbl&gt;, key &lt;dbl&gt;, loudness &lt;dbl&gt;, mode &lt;dbl&gt;, speechiness &lt;dbl&gt;,
+## #   acousticness &lt;dbl&gt;, instrumentalness &lt;dbl&gt;, liveness &lt;dbl&gt;, valence &lt;dbl&gt;,
+## #   tempo &lt;dbl&gt;, duration_ms &lt;dbl&gt;</code></pre>
+<pre class="r"><code># Filter out duplicates and select genre, extract year, remove zero popularity songs
+spotify_songs &lt;-  spotify_songs %&gt;% 
+  filter(!duplicated(paste(track_name, &quot; - &quot;, track_artist))) %&gt;% 
+  filter(playlist_genre == &quot;edm&quot; &amp; track_popularity &gt; 0) %&gt;% 
+  mutate(
+    track_year = as.numeric(str_extract(track_album_release_date, &quot;^.{4}&quot;))  
+  )
+
+# Weight track popularity by year of release using linear model
+edm_model &lt;- lm(data = spotify_songs, 
+                formula = track_popularity ~ I(relevel(as.factor(track_year), ref = &quot;2019&quot;)))
+edm_model &lt;- tidy(edm_model) %&gt;% 
+  mutate(
+    year = ifelse(str_detect(term, &quot;Intercept&quot;), 2019, as.numeric(str_sub(term, -4, -1))),
+    year_weight = ifelse(str_detect(term, &quot;Intercept&quot;), estimate, estimate)
+  )</code></pre>
+<pre><code>## Warning in ifelse(str_detect(term, &quot;Intercept&quot;), 2019,
+## as.numeric(str_sub(term, : NAs introduced by coercion</code></pre>
+<pre class="r"><code>spotify_songs &lt;- left_join(spotify_songs, edm_model %&gt;% select(year, year_weight), 
+                           by = c(&quot;track_year&quot; = &quot;year&quot;)) %&gt;%
+  mutate(
+    weighted_popularity = ifelse(track_year != 2019, 
+                                 track_popularity - year_weight, 
+                                 track_popularity)
+  )
+
+
+# Filter the top 200ish songs by year of release weighted popularity
+spotify_songs &lt;- spotify_songs %&gt;% 
+  mutate(track_rank = rank(-weighted_popularity)) %&gt;% 
+  filter(track_rank &lt; 200)
+
+
+# Create distance matrix based on danceability, energy, loudness, mode, speechiness, acousticness
+# instrumentalness, liveness, valence and tempo
+spotify_songs_distdata &lt;- as.data.frame(spotify_songs)
+rownames(spotify_songs_distdata) &lt;- paste0(spotify_songs_distdata$track_artist, &quot; - &quot;, spotify_songs_distdata$track_name)
+
+# Filter out only variables to predict on
+spotify_songs_distdata &lt;- spotify_songs_distdata %&gt;% 
+  select(danceability, energy, loudness, mode, speechiness,
+         acousticness, instrumentalness, liveness, valence,
+         tempo)
+
+# Distance matrix
+dist_spotify &lt;- dist(spotify_songs_distdata)
+
+# Hierarchical cluster
+clusters_spotify &lt;- hclust(dist_spotify)
+clusters_data &lt;- as.dendrogram(clusters_spotify)
+
+# Dendro data conversion for plotting with ggdendro
+clusters_data_ggd &lt;- dendro_data(clusters_data, type = &quot;rectangle&quot;)
+seg_data &lt;- segment(clusters_data_ggd)
+
+
+# Calculate angles and orientation for label placement
+number_of_bar &lt;- nrow(clusters_data_ggd$labels)
+angle &lt;-  90 - 360 * (as.numeric(rownames(clusters_data_ggd$labels)) - 0.5) / number_of_bar
+clusters_data_ggd$labels$hjust &lt;- ifelse( angle &lt; -90, 1, 0)
+clusters_data_ggd$labels$angle &lt;- ifelse(angle &lt; -90, angle+180, angle)
+
+# Add layers with data on other variables
+label_data &lt;- as_tibble(clusters_data_ggd$labels)
+label_data &lt;- label_data %&gt;% mutate(
+  danceability_y = 8, # most inner
+  energy_y = 7.66, 
+  loudness_y = 7.33, 
+  speechiness_y = 7, 
+  acousticness_y = 6.66, 
+  valence_y = 6.33, 
+  tempo_y = 6 # most outer
+)
+
+# edm colour scheme: 
+edm_col_scheme &lt;- colorRampPalette(c(&quot;#00A6D7&quot;, &quot;#86FAF2&quot;))(7)
+
+label_data &lt;- left_join(label_data, as_tibble(spotify_songs_distdata, rownames = &quot;label&quot;), by = &quot;label&quot;) %&gt;%
+  mutate_at(vars(danceability:tempo), scale) %&gt;%
+  mutate_at(vars(danceability:tempo), ~ntile(., 10))</code></pre>
+<pre><code>## Warning: Column `label` joining factor and character vector, coercing into
+## character vector</code></pre>
+<pre class="r"><code># Add a dummy empty row for space at the top of the plot to avoid label clash
+endpoint_data &lt;- as.tibble(seg_data %&gt;% filter(yend == 0)) %&gt;% add_row(yend = 0, x = max(seg_data$x) + 1)</code></pre>
+<pre><code>## Warning: `as.tibble()` is deprecated, use `as_tibble()` (but mind the new semantics).
+## This warning is displayed once per session.</code></pre>
+<pre class="r"><code>clusters_data_ggd$labels &lt;- clusters_data_ggd$labels %&gt;% add_row(label = &quot;&quot;, x = max(clusters_data_ggd$labels$x) + 1, y = 0, hjust = 0, angle = 90)
+
+# Plot circular dendrogram with acoustic features in centre for most edmular 200 release year weighted 
+# edm songs
+edm_plot &lt;- ggplot(seg_data) +
+  geom_segment(aes(x = x, y = log(y+1), xend = xend, yend = log(yend+1)),
+               alpha = 0.6,
+               col = edm_col_scheme[7]) +
+  geom_point(data = endpoint_data,
+             aes(x = x, y = log(yend+1)),
+             col = edm_col_scheme[7]) +
+  geom_text(data = clusters_data_ggd$labels,
+            aes(x=x, y= log(y+1) - 0.3, label = label, hjust = hjust), 
+            size = 1.8,
+            angle = clusters_data_ggd$labels$angle, inherit.aes = FALSE,
+            col = edm_col_scheme[7]) +
+  # feature layers ordered from inner to outer
+  geom_point(data = label_data,
+             aes(x = x, y = speechiness_y, size = speechiness), 
+             col = edm_col_scheme[4], stroke = 0, alpha = 0.99, shape = 18) +
+  geom_point(data = label_data,
+             aes(x = x, y = loudness_y, size = loudness), 
+             col = edm_col_scheme[5], stroke = 0, alpha = 0.99, shape = 18) +
+  geom_point(data = label_data,
+             aes(x = x, y = acousticness_y, size = acousticness), 
+             col = edm_col_scheme[3], stroke = 0, alpha = 0.99, shape = 18) +
+  geom_point(data = label_data,
+             aes(x = x, y = energy_y, size = energy), 
+             col = edm_col_scheme[6], stroke = 0, alpha = 0.99, shape = 18) +
+  geom_point(data = label_data,
+             aes(x = x, y = valence_y, size = valence), 
+             col = edm_col_scheme[2], stroke = 0, alpha = 0.99, shape = 18) +
+  geom_point(data = label_data,
+             aes(x = x, y = danceability_y, size = danceability), 
+             col = edm_col_scheme[7], stroke = 0, alpha = 0.99, shape = 18) +
+  geom_point(data = label_data,
+             aes(x = x, y = tempo_y, size = tempo), 
+             col = edm_col_scheme[1], stroke = 0, alpha = 0.99, shape = 18) +
+  # annotate(&quot;text&quot;, x = 0, y = 8, label = &quot;edm&quot;, col = &quot;#FE1D6B&quot;, size = 12, 
+  #          alpha = 1, vjust = 1.5) +
+  coord_polar(start = 0) + 
+  scale_y_reverse(limits = c(8, -10), 
+                  expand = c(0.2, 0)) +
+  scale_size(range = c(0.1, 1.5)) +
+  theme_minimal() +
+  theme(
+    axis.text = element_blank(),
+    axis.title = element_blank(),
+    panel.grid = element_blank(),
+    plot.background = element_rect(color = &quot;black&quot;, fill = &quot;black&quot;),  
+    panel.background = element_rect(fill = &quot;black&quot;, color  =  NA),
+    text = element_text(family = &quot;Helvetica&quot;),
+    legend.position = &quot;none&quot;
+  )
+
+edm_plot</code></pre>
+<p><img src="../../posts/2020-01-22-tidy-tuesday-21-01-2020-spotifyr-hierarchical-clusters-of-popular-songs-by-audio-features_files/figure-html/unnamed-chunk-1-1.png" width="672" /></p>
+<pre class="r"><code># # - not run
+# # Save plot 
+# ggsave(&quot;edm_dendro.tiff&quot;, dpi = &quot;retina&quot;, width = 10, height = 10, units = &quot;in&quot;)
+# ggsave(&quot;edm_dendro.png&quot;, dpi = &quot;retina&quot;, width = 10, height = 10, units = &quot;in&quot;)</code></pre>
+</div>
+
+		</div>
+
+		<div class="post-tags">
+			
+				
+					<nav class="nav tags">
+							<ul class="flat">
+								
+								<li><a href="../../tags/r">R</a></li>
+								
+								<li><a href="../../tags/tidytuesday">tidytuesday</a></li>
+								
+								<li><a href="../../tags/datavis">datavis</a></li>
+								
+							</ul>
+					</nav>
+				
+			
+		</div><div id="disqus_thread"></div>
+<script type="text/javascript">
+	(function () {
+		
+		
+		if (window.location.hostname == "localhost")
+			return;
+
+		var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+		var disqus_shortname = 'calumwebb-uk';
+		dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+		(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+	})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by
+		Disqus.</a></noscript>
+<a href="http://disqus.com/" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+	<div class="footer wrapper">
+	<nav class="nav">
+		<div> © Copyright Calum Webb 2019 - 2020 |  <a href="https://github.com/vividvilla/ezhil">Ezhil theme</a> | Built with <a href="https://gohugo.io">Hugo</a></div>
+	</nav>
+</div>
+
+<script>feather.replace()</script>
+</body>
+</html>

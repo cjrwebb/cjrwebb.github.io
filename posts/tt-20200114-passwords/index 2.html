@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge"><title>Tidy Tuesday (14/01/2020): If you&#39;re going to use only letters for your password make it a long one. - Calum Webb</title><meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta property="og:title" content="Tidy Tuesday (14/01/2020): If you&#39;re going to use only letters for your password make it a long one." />
+<meta property="og:description" content="Analysing the features of the most common passwords from multiple data breaches to find what features make for the strongest of the weak." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/posts/tt-20200114-passwords/" />
+<meta property="article:published_time" content="2020-01-19T00:00:00+00:00" />
+<meta property="article:modified_time" content="2020-01-19T00:00:00+00:00" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Tidy Tuesday (14/01/2020): If you&#39;re going to use only letters for your password make it a long one."/>
+<meta name="twitter:description" content="Analysing the features of the most common passwords from multiple data breaches to find what features make for the strongest of the weak."/>
+<meta name="twitter:site" content="@cjrwebb">
+<meta name="twitter:creator" content="@cjrwebb">
+
+<meta name="twitter:description" content="This is my first attempt at a Tidy Tuesday. I’ve been following the Tidy Tuesday initiative since it started, but still never got around to doing one, so this is an attempt to remedy that. The tidy tuesday for this week (14/01/2020) was about passwords, using data about the most common passwords that have appeared in multiple data breaches. These were collated in a dataset by Information is Beautiful." />
+<meta name="twitter:title" content="Tidy Tuesday (14/01/2020): If you&#39;re going to use only letters for your password make it a long one." />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:image" content="" /> 
+	<link href="https://fonts.googleapis.com/css?family=Ubuntu:300,400,300italic,400italic|Raleway:200,300" rel="stylesheet">
+
+	<link rel="stylesheet" type="text/css" media="screen" href="../../css/normalize.css" />
+	<link rel="stylesheet" type="text/css" media="screen" href="../../css/main.css" />
+	<link rel="stylesheet" type="text/css" href="../../css/custom.css" />
+	
+
+	<script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+	<script src="../../js/main.js"></script>
+	<script src="../../js/custom.js"></script>
+	<script src="../../js/custom1.js"></script>
+</head>
+
+<body>
+	<div class="container wrapper post">
+		<meta name="twitter:site" content="@cjrwebb">
+<meta name="twitter:creator" content="@cjrwebb">
+
+<meta name="twitter:description" content="This is my first attempt at a Tidy Tuesday. I’ve been following the Tidy Tuesday initiative since it started, but still never got around to doing one, so this is an attempt to remedy that. The tidy tuesday for this week (14/01/2020) was about passwords, using data about the most common passwords that have appeared in multiple data breaches. These were collated in a dataset by Information is Beautiful." />
+<meta name="twitter:title" content="Tidy Tuesday (14/01/2020): If you&#39;re going to use only letters for your password make it a long one." />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:image" content="" /> 
+
+<div class="header">
+	<h1 class="site-title"><a href="../../">Calum Webb</a></h1>
+	<div class="site-description"><h2>Sociologist.</h2><nav class="nav social">
+			<ul class="flat"><a href="https://twitter.com/cjrwebb" title="Twitter"><i data-feather="twitter"></i></a><a href="../../index.xml" title="RSS"><i data-feather="rss"></i></a><a href="mailto:c.j.webb@sheffield.ac.uk" title="Email"><i data-feather="mail"></i></a><a href="https://github.com/cjrwebb" title="Github"><i data-feather="github"></i></a></ul>
+		</nav>
+	</div>
+	
+	<link rel="stylesheet" href="../../css/github-gist.css" rel="stylesheet" id="theme-stylesheet">
+<script src="../../js/highlight.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+	<nav class="nav">
+		<ul class="flat">
+			
+			<li>
+				<a href="../../">Home</a>
+			</li>
+			
+			<li>
+				<a href="../../posts">All posts</a>
+			</li>
+			
+			<li>
+				<a href="../../about">About</a>
+			</li>
+			
+			<li>
+				<a href="../../cv-ac-cw.pdf">Resume/CV</a>
+			</li>
+			
+			<li>
+				<a href="../../tags">Tags</a>
+			</li>
+			
+		</ul>
+	</nav>
+	
+</div>
+
+
+
+		<div class="post-header">
+			<h1 class="title">Tidy Tuesday (14/01/2020): If you&#39;re going to use only letters for your password make it a long one.</h1>
+			<div class="meta">Posted at &mdash; Jan 19, 2020</div>
+		</div>
+
+		<div class="markdown">
+			
+
+
+<p><img src="../../posts/2020-01-19-tidy-tuesday-14-01-2020-if-you-re-going-to-use-only-letters-for-your-password-make-it-a-long-one_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
+<p>This is my first attempt at a Tidy Tuesday. I’ve been following the Tidy Tuesday initiative since it started, but still never got around to doing one, so this is an attempt to remedy that. The tidy tuesday for this week (14/01/2020) was <a href="https://github.com/rfordatascience/tidytuesday/blob/master/data/2020/2020-01-14/readme.md">about passwords, using data about the most common passwords that have appeared in multiple data breaches</a>. These were collated in a dataset by <a href="https://twitter.com/infobeautiful/status/1216765612439019521?s=20">Information is Beautiful</a>.</p>
+<p>I liked the idea of this one as an opportunity to use regular expressions and the <code>str_detect()</code> function of <code>stringr</code> to extract some information on simple features of the common passwords, creating dummy variables for the following frequent occurances among the weakest of the weak passwords:</p>
+<ul>
+<li>Passwords that use only letters</li>
+<li>Passwords that use only numbers</li>
+<li>Passwords that use repeated patterns (e.g. “asdfasdf”)</li>
+</ul>
+<p>As well as more standard things like password length. The aim of my approach to this Tidy Tuesday dataset was to do the following:</p>
+<ol style="list-style-type: decimal">
+<li>Create some new variables based on features identified in the common passwords using regex</li>
+<li>Visualise the relationship between password strength and these variables to come up with some hypotheses</li>
+<li>Test these hypotheses using a simple multiple regression model</li>
+</ol>
+<div id="identifying-password-features" class="section level2">
+<h2>Identifying password features</h2>
+<p>I start off by reading the data from the tidy tuesday repository. Then, using <code>mutate()</code> we create a few additional dummy variables that identify whether the password meets the criteria set by the regular expressions. For example, in the first variable we set the value to 1 if the password contains only numbers, in the second if it contains only letters, and so on. For the purpose of visualising the data I also create a <code>pw_feat</code> variable that contains all of the unique combinations of the three features I created dummy variables for.</p>
+<p>Lastly, I filter out the <code>NA</code> rows that have crept into the data.</p>
+<hr />
+<pre class="r"><code>library(tidyverse)
+
+passwords &lt;- read_csv(&#39;https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2020/2020-01-14/passwords.csv&#39;)
+
+passwords &lt;- passwords %&gt;% mutate(
+  # Does password contain only numbers?
+  all_num = ifelse(str_detect(password, &quot;^[0-9]*$&quot;), 1, 0),
+  # Does password contain only letters?
+  all_let = ifelse(str_detect(password, &quot;^[a-zA-Z]*$&quot;), 1, 0),
+  # Does password contain repeated strings?
+  rep_str = ifelse(str_detect(password, &quot;\\b(\\S+?)\\1\\S*\\b&quot;), 1, 0),
+  # length of password
+  pw_len = str_length(password),
+  # Combined flags in categorical variable
+  pw_feat = paste0(ifelse(all_num == 1, &quot;All numbers, &quot;, &quot;&quot;),
+                   ifelse(all_let == 1, &quot;All letters, &quot;, &quot;&quot;),
+                   ifelse(all_num == 0 &amp; all_let == 0, &quot;Mixed numbers and letters, &quot;, &quot;&quot;),
+                   ifelse(rep_str == 1, &quot;repeated strings.&quot;, &quot;no repeated strings.&quot;)
+                   )
+) %&gt;% filter(!is.na(password))</code></pre>
+<hr />
+</div>
+<div id="visualising-password-features-and-relative-strength" class="section level2">
+<h2>Visualising password features and relative strength</h2>
+<p>Next, I want to visualise the data so I can come up with some hypotheses about what might contribute to better password strength (especially since I don’t have much knowledge about cybersecurity to draw on). Using <code>ggplot</code> we can start by creating a scatterplot of the log of the password strength (plus one) on the y axis and the password length on the x axis. I add some jitter to both to give a sense of the number of passwords that are in that length range, as there is not a huge amount of variation.</p>
+<p>The reason I use the log of the password strength score is because the strength scores of the common passwords are heavily right skewed, with a number of passwords that score over 30 but a majority that are between the 0 and 10 range. Because the log of 0 is undefined, we also need to add a constant of 1 to the strength score so that our logged strength score doesn’t end up returning a bunch of undefined results that end up removed. This is a necessary transformation for the regression model we plan to do later.</p>
+<hr />
+<pre class="r"><code>passwords %&gt;% ggplot() +
+  geom_point(
+    aes(x = jitter(pw_len, 2), y = jitter(log(strength + 1), 2), col = pw_feat)
+  ) +
+  xlab(&quot;Password Length (plus jitter)&quot;) +
+  ylab(&quot;Logged Password Strength Score (plus jitter)&quot;) +
+  labs(col = &quot;Features of password&quot;) +
+  ggtitle(&quot;Strength of password by password length and features (among weak passwords).&quot;,
+          subtitle = &quot;Stronger passwords have a mixture of letters and numbers. Letter-only passwords are stronger when they&#39;re longer.&quot;) +
+  theme_minimal()</code></pre>
+<p><img src="../../posts/2020-01-19-tidy-tuesday-14-01-2020-if-you-re-going-to-use-only-letters-for-your-password-make-it-a-long-one_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
+<hr />
+<p>We can pick up quite a few things clearly from this visualisation. Namely that the strongest of the weak passwords seem to be disproportionately from the ‘Mixed numbers and letters, no repeated strings’ feature category (in pink). The ‘all letters, no repeated strings’ category of passwords seems to do a little better than the others. On average, the weakest of the most common passwords seem to be the ones that use all numbers with repeated strings (for example, 111111).</p>
+<p>What’s also pretty interesting is that the length of the password only seems to have a clear positive relationship with the strength of the password for passwords that are all letters. ‘platinum’ is, for instance, rated higher than ‘apple’. For passwords that are just numbers, or ones that are a mixture of the two, password length doesn’t seem to matter too much (although in these common passwords from data breaches we only have passwords as long as 9 character; not exactly the Fort Knox of internet security. A more complete dataset would probably yield different results).</p>
+<p>From this, we can come up with the following hypotheses to test with a regression model:</p>
+<ol style="list-style-type: decimal">
+<li>Passwords that contain only numbers or letters will be weaker than passwords that contain a mixture of both letters and numbers</li>
+<li>Passwords with repeated strings will be weaker than passwords without repeated strings</li>
+<li>The effect of password length will be stronger for passwords that use only letters</li>
+</ol>
+</div>
+<div id="a-simple-regression-model-for-predicting-password-strength-among-common-passwords" class="section level2">
+<h2>A simple regression model for predicting password strength among common passwords</h2>
+<p>Those familiar with regression models will know that the inclusion of dummy variables in a model means that one category must be excluded, becoming the reference group that is captured by the constant. In this case, we have the following independent variables: <code>all_num</code>, <code>all_let</code>, <code>rep_str</code>, and <code>pw_len</code>. Our reference category, in this instance, would be passwords that contain a mixture of both numbers and letters with no repeated strings. Without any futher transformation the constant would also refer to a password of length zero, which doesn’t really make much sense, so we should probably centre that to the average password length of 6.2 characters. This is easily done within the model using the <code>scale()</code> function.</p>
+<hr />
+<pre class="r"><code>pw_model &lt;- lm(data = passwords,
+               formula = log(strength + 1) ~ all_num + all_let * scale(pw_len, scale = FALSE) + rep_str)
+
+summary(pw_model)</code></pre>
+<pre><code>## 
+## Call:
+## lm(formula = log(strength + 1) ~ all_num + all_let * scale(pw_len, 
+##     scale = FALSE) + rep_str, data = passwords)
+## 
+## Residuals:
+##      Min       1Q   Median       3Q      Max 
+## -2.03737 -0.09146  0.04207  0.15889  1.82205 
+## 
+## Coefficients:
+##                                      Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept)                           3.58165    0.08751  40.927  &lt; 2e-16 ***
+## all_num                              -1.86509    0.11493 -16.228  &lt; 2e-16 ***
+## all_let                              -1.52068    0.08878 -17.129  &lt; 2e-16 ***
+## scale(pw_len, scale = FALSE)         -0.02250    0.03383  -0.665 0.506416    
+## rep_str                              -1.46370    0.07713 -18.977  &lt; 2e-16 ***
+## all_let:scale(pw_len, scale = FALSE)  0.13932    0.03696   3.769 0.000183 ***
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## Residual standard error: 0.3168 on 494 degrees of freedom
+## Multiple R-squared:  0.7345, Adjusted R-squared:  0.7318 
+## F-statistic: 273.3 on 5 and 494 DF,  p-value: &lt; 2.2e-16</code></pre>
+<hr />
+<p>So, our model seems to do a fairly good job at explaining why some of those common passwords are relatively weaker than others. Let’s break our results down in the way that we’d usually do in regression:</p>
+<div id="model-fit" class="section level4">
+<h4>Model fit</h4>
+<p>We have an adjusted R-squared value of 0.7318, suggesting that we’re explaining about 73 per cent of the variation in password strength scores using these four variables and the interaction term. This isn’t bad considering that our variables were just snippets of information we could easily extract from the password strings using regular expressions. In general, our model is pretty good at estimating password strength using just password length, whether the password is just numeric, just alphabetical, and whether there are any repeated strings.</p>
+</div>
+<div id="significance-of-independent-variables" class="section level4">
+<h4>Significance of independent variables</h4>
+<p>These are not really a random sample of passwords, so I’m not sure we can put much stock in anything that our tests of statistical significance tell us. It would be better off looking directly at the estimates to see how our score changes.</p>
+</div>
+<div id="how-password-features-can-help-explain-password-strength-scores" class="section level4">
+<h4>How password features can help explain password strength scores</h4>
+<p>Remember that the intercept refers to the expected value of <em>log(password strength + 1)</em> when all of our independent variables are equal to zero. For a password that was a mixture of numbers and letters, with an average length of around 6 characters and no repeated strings we would expect the logged value of password strength plus one to be around 3.58. As we saw on our graph earlier, this would be a pretty good score, towards the top of our group of common passwords.</p>
+<p>For passwords that are all numbers we would expect this score to drop by around 1.865, if it also had repeated strings of numbers we would expect it to drop by a further 1.464, making it pretty much as bad as it can be. For a password that is just letters we would expect a fall of around 1.52.</p>
+<p>However, we can see that the length of the password is also important when the password is all letters. An increase of one character in the length of a password that is all letters is associated with an increase of 0.117 (0.13932 + -0.02250) in the logged password strength score. If this increase continued linearly outside of our data range (which it probably doesn’t), it would mean that we would have to increase the length of our letters-only password by about 13 characters to make it comparable in strength to a common password of average length that uses a combination of letters and numbers.</p>
+<p>Although that may sound like a lot, consider that it may be easier to remember a long password of only letters than it is to remember a short password of letters and numbers, and that this may even be preferable for security, especially when combined with special characters (as demonstrated by the <a href="https://xkcd.com/936/">XKCD</a> comic below that is featured prominently on the Tidy Tuesday page for this week’s data).</p>
+<p><img src="https://camo.githubusercontent.com/80ed774dd004f7901a4819cbdea6150211d01725/68747470733a2f2f696d67732e786b63642e636f6d2f636f6d6963732f70617373776f72645f737472656e6774682e706e67" /></p>
+<p>To complete this week, let’s also add the regression lines for expected scores from our model when passwords are a combination of letters and numbers and when they are letters only to our data visualisation using <code>geom_abline</code>. We’ll also extend the data range to demonstrate the point that is being made from extrapolating the data, that we could increase the length of a letters only password to reach a comparable strength to a letters and numbers password. We would hope that we could get data with a sample of all passwords to check whether this appeared to be the case, or whether we should revise our statistical model! In general we shouldn’t extrapolate beyond our data range.</p>
+<hr />
+<pre class="r"><code>passwords %&gt;% ggplot(
+  aes(x = jitter(pw_len - mean(pw_len), 2), y = jitter(log(strength + 1), 2), col = pw_feat)
+  ) +
+  geom_point() +
+  # Regression line for numbers and letters
+  geom_abline(intercept = 3.58165, slope = -0.02250, col = &quot;#F95BFA&quot;) + 
+  # regression line for all letters, no repeated strings
+  geom_abline(intercept = 3.58165 + -1.52068, slope = -0.02250 + 0.13932, col = &quot;#FF6C67&quot;) + 
+  xlab(&quot;Password Length (plus jitter) mean centred&quot;) +
+  ylab(&quot;Logged Password Strength Score (plus jitter)&quot;) +
+  xlim(c(-3, 13)) + 
+  labs(col = &quot;Features of password&quot;) +
+  ggtitle(&quot;Strength of password by password length and features (among weak passwords).&quot;,
+          subtitle = &quot;Stronger passwords have a mixture of letters and numbers.\nLetter-only passwords are stronger when they&#39;re longer.&quot;) +
+  theme_minimal()</code></pre>
+<p><img src="../../posts/2020-01-19-tidy-tuesday-14-01-2020-if-you-re-going-to-use-only-letters-for-your-password-make-it-a-long-one_files/figure-html/unnamed-chunk-6-1.png" width="672" /></p>
+<hr />
+</div>
+</div>
+
+		</div>
+
+		<div class="post-tags">
+			
+				
+					<nav class="nav tags">
+							<ul class="flat">
+								
+								<li><a href="../../tags/tidytuesday">tidytuesday</a></li>
+								
+								<li><a href="../../tags/r">R</a></li>
+								
+							</ul>
+					</nav>
+				
+			
+		</div><div id="disqus_thread"></div>
+<script type="text/javascript">
+	(function () {
+		
+		
+		if (window.location.hostname == "localhost")
+			return;
+
+		var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+		var disqus_shortname = 'calumwebb-uk';
+		dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+		(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+	})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by
+		Disqus.</a></noscript>
+<a href="http://disqus.com/" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+	<div class="footer wrapper">
+	<nav class="nav">
+		<div> © Copyright Calum Webb 2019 - 2020 |  <a href="https://github.com/vividvilla/ezhil">Ezhil theme</a> | Built with <a href="https://gohugo.io">Hugo</a></div>
+	</nav>
+</div>
+
+<script>feather.replace()</script>
+</body>
+</html>
